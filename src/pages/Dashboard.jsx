@@ -1,7 +1,5 @@
-import React from 'react'
-// react plugin used to create charts
+import React, { Component } from 'react'
 import { Line, Pie } from 'react-chartjs-2'
-// reactstrap components
 import {
   Card,
   CardHeader,
@@ -11,14 +9,13 @@ import {
   Row,
   Col
 } from 'reactstrap'
-// core components
 import {
   dashboard24HoursPerformanceChart,
   dashboardEmailStatisticsChart,
   dashboardNASDAQChart
 } from 'variables/charts.jsx'
 
-class Dashboard extends React.Component {
+export default class Dashboard extends Component {
   render() {
     return (
       <>
@@ -212,5 +209,3 @@ class Dashboard extends React.Component {
     )
   }
 }
-
-export default Dashboard

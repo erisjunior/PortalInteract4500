@@ -55,12 +55,9 @@ export default class Sidebar extends Component {
           </a>
         </div>
         <div className='sidebar-wrapper' ref={this.sidebar}>
-          <Nav>
-            {routes.map(({ name, layout, path, pro, icon }, key) => (
-              <li
-                className={this.activeRoute(path) + (pro ? ' active-pro' : '')}
-                key={key}
-              >
+          <Nav style={{ width: 258 }}>
+            {routes.map(({ name, layout, path, icon }, key) => (
+              <li className={this.activeRoute(path)} key={key}>
                 <NavLink
                   to={layout + path}
                   className='nav-link'

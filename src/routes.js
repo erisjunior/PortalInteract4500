@@ -3,9 +3,7 @@ import Notifications from 'pages/Notifications.jsx'
 import Icons from 'pages/Icons.jsx'
 import Typography from 'pages/Typography.jsx'
 import TableList from 'pages/Tables.jsx'
-import Maps from 'pages/Map.jsx'
 import UserPage from 'pages/User.jsx'
-import UpgradeToPro from 'pages/Upgrade.jsx'
 
 var routes = [
   {
@@ -20,13 +18,6 @@ var routes = [
     name: 'Icons',
     icon: 'nc-icon nc-diamond',
     component: Icons,
-    layout: '/admin'
-  },
-  {
-    path: '/maps',
-    name: 'Maps',
-    icon: 'nc-icon nc-pin-3',
-    component: Maps,
     layout: '/admin'
   },
   {
@@ -55,14 +46,6 @@ var routes = [
     name: 'Typography',
     icon: 'nc-icon nc-caps-small',
     component: Typography,
-    layout: '/admin'
-  },
-  {
-    pro: true,
-    path: '/upgrade',
-    name: 'Upgrade to PRO',
-    icon: 'nc-icon nc-spaceship',
-    component: UpgradeToPro,
     layout: '/admin'
   }
 ]
