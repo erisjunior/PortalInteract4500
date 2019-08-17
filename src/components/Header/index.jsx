@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import {
   Navbar,
-  NavbarToggler,
   NavbarBrand,
-  Container
+  Container,
+  Nav,
+  NavItem
+  // NavbarToggler,
   // Collapse,
-  // Nav,
-  // NavItem,
   // Dropdown,
   // DropdownToggle,
   // DropdownMenu,
@@ -119,12 +119,20 @@ export default class Header extends Component {
             </div>
             <NavbarBrand href='/'>{this.getBrand()}</NavbarBrand>
           </div>
+          <Nav navbar>
+            <NavItem>
+              <Link to='#pablo' className='nav-link btn-rotate'>
+                <i className='fas fa-sign-out-alt' />
+              </Link>
+            </NavItem>
+          </Nav>
+          {/* 
           <NavbarToggler onClick={this.toggle}>
             <span className='navbar-toggler-bar navbar-kebab' />
             <span className='navbar-toggler-bar navbar-kebab' />
             <span className='navbar-toggler-bar navbar-kebab' />
           </NavbarToggler>
-          {/* <Collapse isOpen={isOpen} navbar className='justify-content-end'>
+          <Collapse isOpen={isOpen} navbar className='justify-content-end'>
             <form>
               <InputGroup className='no-border'>
                 <Input placeholder='Search...' />

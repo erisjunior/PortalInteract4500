@@ -40,16 +40,20 @@ export default class Sidebar extends Component {
       >
         <div className='logo'>
           <a
-            href='https://www.creative-tim.com'
+            href='https://www.interact4500.com'
             className='simple-text logo-mini'
+            rel='noopener noreferrer'
+            target='_blank'
           >
             <div className='logo-img'>
               <img src={logo} alt='react-logo' />
             </div>
           </a>
           <a
-            href='https://www.creative-tim.com'
+            href='https://www.interact4500.com'
             className='simple-text logo-normal'
+            rel='noopener noreferrer'
+            target='_blank'
           >
             Interact4500
           </a>

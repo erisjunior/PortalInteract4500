@@ -26,8 +26,14 @@ export default class Footer extends Component {
             </nav>
             <div className='credits ml-auto'>
               <div className='copyright'>
-                &copy; {1900 + new Date().getYear()}, developed by{' '}
-                <i>Erisvan Junior</i>
+                <a
+                  href='https://www.linkedin.com/in/antônio-erisvan-b86353156/'
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  &copy; {1900 + new Date().getYear()}, developed by{' '}
+                  <i>Erisvan Junior</i>
+                </a>
               </div>
             </div>
           </Row>
