@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import {
+  Button,
   Card,
   CardHeader,
   CardBody,
@@ -31,7 +32,7 @@ export default class Reports extends Component {
         <Row>
           <Col md='12'>
             <Card className='demo-icons'>
-              <Form>
+              <Form onSubmit={e => e.preventDefault()}>
                 <CardHeader>
                   <CardTitle tag='h5'>{club}</CardTitle>
                   <Col md='4'>
@@ -75,6 +76,9 @@ export default class Reports extends Component {
                         placeholder='Palavra do presidente...'
                       />
                     </FormGroup>
+                  </Col>
+                  <Col md={{ size: 2, offset: 10 }}>
+                    <Button color='info'>Continuar</Button>
                   </Col>
                 </CardBody>
               </Form>

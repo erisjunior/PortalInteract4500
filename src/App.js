@@ -7,17 +7,22 @@ import 'assets/scss/paper-dashboard.scss?v=1.1.0'
 import 'assets/css/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
+import store from 'store'
+import { Provider } from 'react-redux'
+
 import { Dashboard } from 'layouts'
 
 const hist = createBrowserHistory()
 
 const App = () => (
-  <Router history={hist}>
-    <Switch>
-      <Route path='/' render={props => <Dashboard {...props} />} />
-      <Redirect from='*' to='/perfil' />
-    </Switch>
-  </Router>
+  <Provider store={store}>
+    <Router history={hist}>
+      <Switch>
+        <Route path='/' render={props => <Dashboard {...props} />} />
+        <Redirect from='*' to='/perfil' />
+      </Switch>
+    </Router>
+  </Provider>
 )
 
 export default App
