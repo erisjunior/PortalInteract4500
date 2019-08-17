@@ -1,17 +1,15 @@
-import React from 'react'
-// javascript plugin used to create scrollbars on windows
-import PerfectScrollbar from 'perfect-scrollbar'
-import { Route, Switch } from 'react-router-dom'
+import React, { Component } from 'react'
 
-import DemoNavbar from 'components/Navbars/DemoNavbar.jsx'
-import Footer from 'components/Footer/Footer.jsx'
-import Sidebar from 'components/Sidebar/Sidebar.jsx'
+import PerfectScrollbar from 'perfect-scrollbar'
+import { Route, Switch, Redirect } from 'react-router-dom'
+
+import { Sidebar, Header, Footer } from 'components'
 
 import routes from 'routes.js'
 
 var ps
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.mainPanel = React.createRef()
@@ -54,11 +52,12 @@ class Dashboard extends React.Component {
           activeColor={activeColor}
         />
         <div className='main-panel' ref={this.mainPanel}>
-          <DemoNavbar {...this.props} />
+          <Header {...this.props} />
           <Switch>
-            {routes.map(({ layout, path, component }, key) => (
-              <Route path={layout + path} component={component} key={key} />
+            {routes.map(({ path, component }, key) => (
+              <Route path={path} component={component} key={key} />
             ))}
+            <Redirect from='*' to='/perfil' />
           </Switch>
           <Footer fluid />
         </div>

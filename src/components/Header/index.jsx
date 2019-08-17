@@ -52,8 +52,8 @@ export default class Header extends Component {
 
   getBrand = () => {
     let brandName = 'Default Brand'
-    routes.map(({ path, layout, name }) => {
-      if (window.location.href.indexOf(layout + path) !== -1) {
+    routes.map(({ path, name }) => {
+      if (window.location.href.indexOf(path) !== -1) {
         brandName = name
       }
       return null

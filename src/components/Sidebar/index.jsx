@@ -4,7 +4,7 @@ import { Nav } from 'reactstrap'
 
 import PerfectScrollbar from 'perfect-scrollbar'
 
-import logo from 'logo.svg'
+import logo from 'assets/img/logo.png'
 
 var ps
 
@@ -51,15 +51,15 @@ export default class Sidebar extends Component {
             href='https://www.creative-tim.com'
             className='simple-text logo-normal'
           >
-            Creative Tim
+            Interact4500
           </a>
         </div>
         <div className='sidebar-wrapper' ref={this.sidebar}>
           <Nav style={{ width: 258 }}>
-            {routes.map(({ name, layout, path, icon }, key) => (
+            {routes.map(({ name, path, icon }, key) => (
               <li className={this.activeRoute(path)} key={key}>
                 <NavLink
-                  to={layout + path}
+                  to={path}
                   className='nav-link'
                   activeClassName='active'
                 >

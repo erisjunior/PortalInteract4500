@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-// reactstrap components
 import {
   Button,
   Card,
@@ -15,7 +14,7 @@ import {
   Col
 } from 'reactstrap'
 
-class User extends React.Component {
+export default class User extends Component {
   render() {
     return (
       <>
@@ -301,5 +300,3 @@ class User extends React.Component {
     )
   }
 }
-
-export default User
