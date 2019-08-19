@@ -117,7 +117,7 @@ export default class Header extends Component {
                 <span className='navbar-toggler-bar bar3' />
               </button>
             </div>
-            <NavbarBrand href='/'>{this.getBrand()}</NavbarBrand>
+            <NavbarBrand href='#!'>{this.getBrand()}</NavbarBrand>
           </div>
           <Nav navbar>
             <NavItem>

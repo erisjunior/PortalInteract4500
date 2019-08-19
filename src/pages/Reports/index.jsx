@@ -8,7 +8,6 @@ import {
   CardTitle,
   Row,
   Col,
-  Form,
   FormGroup,
   Label,
   Input
@@ -16,72 +15,112 @@ import {
 
 import { arrayOfMonths } from 'helpers'
 
+import * as Pages from './pages'
+
 export default class Reports extends Component {
   state = {
-    month: 'Agosto',
-    club: 'Interact Club de Master Natal-Sul'
+    actualPage: 0,
+    report: {
+      month: 'Julho',
+      club: '',
+      clubId: '',
+      president: {},
+      secretary: {},
+      treasurer: {},
+      protocol: {},
+      adm: {},
+      ph: {},
+      ip: {},
+      dqa: {},
+      fr: {}
+    }
   }
 
   formatMonthOptions = () =>
     arrayOfMonths().map(month => <option key={month}>{month}</option>)
 
+  onClickContinue = () => {
+    const { actualPage } = this.state
+    this.setState({ actualPage: actualPage + 1 })
+  }
+  onClickBack = () => {
+    const { actualPage } = this.state
+    this.setState({ actualPage: actualPage - 1 })
+  }
+
+  showContent = () => {
+    const { actualPage } = this.state
+
+    switch (actualPage) {
+      case 0:
+        return <Pages.PresidentForm />
+      case 1:
+        return <Pages.SecretaryForm />
+      case 2:
+        return <Pages.TreasurerForm />
+      case 3:
+        return <Pages.ProtocolForm />
+      case 4:
+        return <Pages.ADMForm />
+      case 5:
+        return <Pages.PHForm />
+      case 6:
+        return <Pages.IPForm />
+      case 7:
+        return <Pages.DQAForm />
+      case 8:
+        return <Pages.FRForm />
+      default:
+        return <Pages.PresidentForm />
+    }
+  }
+
   render() {
-    const { club } = this.state
+    const { actualPage } = this.state
     return (
       <div className='content'>
         <Row>
           <Col md='12'>
             <Card className='demo-icons'>
-              <Form onSubmit={e => e.preventDefault()}>
-                <CardHeader>
-                  <CardTitle tag='h5'>{club}</CardTitle>
-                  <Col md='4'>
-                    <FormGroup row>
-                      <Label for='exampleSelect'>Mês</Label>
-                      <Input
-                        onChange={e => this.setState({ month: e })}
-                        type='select'
-                        name='select'
-                        id='exampleSelect'
-                      >
-                        {this.formatMonthOptions()}
-                      </Input>
-                    </FormGroup>
-                  </Col>
-                </CardHeader>
-                <CardHeader>
-                  <CardTitle tag='h5'>Presidência</CardTitle>
-                  <Col md='4'>
-                    <FormGroup row>
-                      <Label for='president'>Responsável</Label>
-                      <Input
-                        type='text'
-                        name='president'
-                        id='president'
-                        placeholder='Nome do Responsável'
-                      />
-                    </FormGroup>
-                  </Col>
-                </CardHeader>
-                <CardBody>
-                  <Col md='10'>
-                    <FormGroup row>
-                      <Label for='presidentDescription'>
-                        Descrição das atividades:
-                      </Label>
-                      <Input
-                        type='textarea'
-                        name='presidentDescription'
-                        id='presidentDescription'
-                        placeholder='Palavra do presidente...'
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={{ size: 2, offset: 10 }}>
-                    <Button color='info'>Continuar</Button>
-                  </Col>
-                </CardBody>
-              </Form>
+              <CardHeader>
+                <CardTitle tag='h5'>Interact Club Master Natal Sul</CardTitle>
+                <Col md='4'>
+                  <FormGroup row>
+                    <Label for='exampleSelect'>Mês</Label>
+                    <Input type='select' name='select' id='exampleSelect'>
+                      {this.formatMonthOptions()}
+                    </Input>
+                  </FormGroup>
+                </Col>
+              </CardHeader>
+              <CardBody>
+                {this.showContent()}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between'
+                  }}
+                >
+                  {actualPage > 0 && (
+                    <Button onClick={this.onClickBack} color='info'>
+                      Voltar
+                    </Button>
+                  )}
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      flex: 1
+                    }}
+                  >
+                    {actualPage < 8 && (
+                      <Button onClick={this.onClickContinue} color='info'>
+                        Continuar
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardBody>
             </Card>
           </Col>
         </Row>
