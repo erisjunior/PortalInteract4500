@@ -1,11 +1,12 @@
-// import { takeLatest, call, put, select } from 'redux-saga/effects'
+import { takeLatest, call, put, select } from 'redux-saga/effects'
+import ReportsActions, { ReportsTypes } from 'store/ducks/reports'
 
-// import ReportsActions, { ReportsTypes } from 'store/ducks/reports'
+import { save } from 'services/firebase'
 
-// function* updateReport() {
-//   return
-// }
+function* setPresidentReport({ presidentReport }) {
+  save('report', presidentReport)
+}
 
 export default [
-  // takeLatest(ReportsTypes.UPDATE_REPORT, updateReport)
+  takeLatest(ReportsTypes.SET_PRESIDENT_REPORT, setPresidentReport)
 ]

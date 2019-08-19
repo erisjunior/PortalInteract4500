@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "portal-interact4500",
+    "public": "build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}

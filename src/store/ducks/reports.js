@@ -2,18 +2,20 @@ import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
-  updateReport: ['field']
+  setPresidentReport: ['presidentReport'],
+
+  sendReport: null
 })
 
 export const ReportsTypes = Types
 export default Creators
 
 const INITIAL_STATE = Immutable({
-  report: {}
+  presidentReport: null
 })
 
-const onUpdateReport = state => state.merge({})
+const onSetInfo = (state, action) => state.merge({ ...action })
 
 export const ReportsReducer = createReducer(INITIAL_STATE, {
-  [Types.UPDATE_REPORT]: onUpdateReport
+  [Types.SET_PRESIDENT_REPORT]: onSetInfo
 })
