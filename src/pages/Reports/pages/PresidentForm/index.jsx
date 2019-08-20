@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
 
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-
-import ReportsActions from 'store/ducks/reports'
-
 import {
   CardHeader,
   CardBody,
@@ -69,12 +64,4 @@ class PresidentForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(ReportsActions, dispatch)
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PresidentForm)
+export default PresidentForm

@@ -1,0 +1,96 @@
+{
+  "clubs": {
+    "club1": {
+      "id": 1,
+      "name": "Interact Club de Master Natal-Sul"
+    },
+    "club2": {
+      "id": 2,
+      "name": "Interact Club de Pau dos Ferros"
+    },
+    "club3": {
+      "id": 3,
+      "name": "Interact Club Recife Encanta Moça"
+    },
+    "club4": {
+      "id": 4,
+      "name": "Interact Club João Pessoa Sul"
+    },
+    "club5": {
+      "id": 5,
+      "name": "Interact Club de Surubim-Centro"
+    },
+    "club6": {
+      "id": 6,
+      "name": "Interact Club de São Miguel"
+    },
+    "club7": {
+      "id": 7,
+      "name": "Interact Club de São José do Egito"
+    },
+    "club8": {
+      "id": 8,
+      "name": "Interact Club de São João do Rio do Peixe"
+    },
+    "club9": {
+      "id": 9,
+      "name": "Interact Club de Pombal"
+    },
+    "club10": {
+      "id": 10,
+      "name": "Interact Club de Piancó do Centenário"
+    },
+    "club11": {
+      "id": 11,
+      "name": "Interact Club de Patos-Sul"
+    },
+    "club12": {
+      "id": 12,
+      "name": "Interact Club de Patos-Norte"
+    },
+    "club13": {
+      "id": 13,
+      "name": "Interact Club de Itapetim"
+    },
+    "club14": {
+      "id": 14,
+      "name": "Interact Club de Catolé do Rocha"
+    },
+    "club15": {
+      "id": 15,
+      "name": "Interact Club de Cajazeiras-Centro"
+    },
+    "club16": {
+      "id": 16,
+      "name": "Interact Club de Caicó-Centenário"
+    },
+    "club17": {
+      "id": 17,
+      "name": "Interact Club de Belo Jardim"
+    },
+    "club18": {
+      "id": 18,
+      "name": "Interact Club de Araripina"
+    },
+    "club19": {
+      "id": 19,
+      "name": "Interact Club de Águas Belas"
+    },
+    "club20": {
+      "id": 20,
+      "name": "Interact Club Bom Conselho"
+    },
+    "club21": {
+      "id": 21,
+      "name": "Interact Club Arcoverde"
+    }
+  },
+  "report": {
+    "-Lmc4zcgVFLU_N1bjI6q": {
+      "club": "Interact Club de Master Natal-Sul",
+      "month": "Agosto",
+      "president": "Antonio E",
+      "presidentDescription": "foi shioooooooooow"
+    }
+  }
+}
