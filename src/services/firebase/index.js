@@ -1,36 +1,25 @@
 import { firebaseDatabase } from './config'
 
-class FirebaseDatabase {
-  static getDataList = (nodePath, callback, size = 10) => {
-    let query = firebaseDatabase.ref(nodePath).limitToLast(size)
+function save(path, data) {
+  return firebaseDatabase.ref(path).push(data)
+}
 
-    query.on('value', dataSnapshot => {
-      let items = []
+function load(path, callback, size = 10) {
+  let query = firebaseDatabase.ref(path).limitToLast(size)
 
-      dataSnapshot.forEach(childSnapshot => {
-        let item = childSnapshot.val()
-        item['key'] = childSnapshot.key
-        items.push(item)
-      })
-
-      callback(items)
+  query.on('value', dataSnapshot => {
+    let items = []
+    dataSnapshot.forEach(childSnapshot => {
+      let item = childSnapshot.val()
+      item['key'] = childSnapshot.key
+      items.push(item)
     })
-  }
-
-  static pushData = (node, objToSubmit) => {
-    firebaseDatabase.ref(node).push(objToSubmit)
-  }
-
-  static remove = (id, node) => {
-    firebaseDatabase.ref(`${node}/${id}`).remove()
-  }
+    callback(items)
+  })
 }
 
-const save = (path, data) => {
-  FirebaseDatabase.pushData(path, data)
-}
-const load = (path, size) => {
-  return FirebaseDatabase.getDataList(path, data => data, size)
+function remove(id, node) {
+  return firebaseDatabase.ref(`${node}/${id}`).remove()
 }
 
 const login = () => {
@@ -46,7 +35,7 @@ const logout = () => {
   // })
 }
 
-export { save, load, logout, login }
+export { save, load, remove, logout, login }
 
 // auth.onAuthStateChanged(user => {
 //   if (user) {
