@@ -11,7 +11,7 @@ import {
   Input
 } from 'reactstrap'
 
-export default class DQAForm extends Component {
+class DQAForm extends Component {
   state = {
     dqa: '',
     dqaDescription: ''
@@ -109,9 +109,7 @@ export default class DQAForm extends Component {
             </Col>
             <Col md='4'>
               <FormGroup>
-                <Label for='dqa'>
-                  N° de associados no último dia do mês
-                </Label>
+                <Label for='dqa'>N° de associados no último dia do mês</Label>
                 <Input
                   type='text'
                   name='dqa'
@@ -124,9 +122,7 @@ export default class DQAForm extends Component {
           </Row>
           <Col md='10'>
             <FormGroup row>
-              <Label for='dqaDescription'>
-                Descrição das atividades:
-              </Label>
+              <Label for='dqaDescription'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
                 name='dqaDescription'
