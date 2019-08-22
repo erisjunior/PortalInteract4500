@@ -95,7 +95,7 @@
 }
 
 .demo-icons header a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .demo-icons .nc-icon {

@@ -27,7 +27,7 @@ class App extends Component {
       <Router history={hist}>
         <Switch>
           <Route path='/' render={props => <Dashboard {...props} />} />
-          <Redirect from='*' to='/perfil' />
+          <Redirect from='*' to='/' />
         </Switch>
       </Router>
     )

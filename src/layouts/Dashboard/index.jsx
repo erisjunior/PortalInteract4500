@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 import { Sidebar, Header, Footer } from 'components'
 
-import routes from 'routes.js'
+import { unloggedRoutes, routes } from 'routes.js'
 
 var ps
 
@@ -13,11 +13,6 @@ class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.mainPanel = React.createRef()
-  }
-
-  state = {
-    backgroundColor: 'black',
-    activeColor: 'info'
   }
 
   componentDidMount() {
@@ -42,14 +37,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { backgroundColor, activeColor } = this.state
     return (
       <div className='wrapper'>
         <Sidebar
           {...this.props}
           routes={routes}
-          bgColor={backgroundColor}
-          activeColor={activeColor}
+          bgColor='black'
+          activeColor='primary'
         />
         <div className='main-panel' ref={this.mainPanel}>
           <Header {...this.props} />

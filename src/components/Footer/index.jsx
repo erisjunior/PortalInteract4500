@@ -22,6 +22,24 @@ export default class Footer extends Component {
                     <i className='fab fa-instagram' /> Instagram
                   </a>
                 </li>
+                <li>
+                  <a
+                    href='drive.google.com/open?id=1bIDu3b1QMJ9jHuklQ96p7J-QIaDfVrzT'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <i className='fab fa-google-drive' /> Drive
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href='http://www.unyclub.com.br/ipanel'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <i className='fas fa-wrench' /> Unyclub
+                  </a>
+                </li>
               </ul>
             </nav>
             <div className='credits ml-auto'>
@@ -34,7 +52,7 @@ export default class Footer extends Component {
                       target='_blank'
                     >
                       &copy; {1900 + new Date().getYear()}, developed by{' '}
-                      <i>Erisvan Junior</i>
+                      <i class='eris'>Erisvan Junior</i>
                     </a>
                   </li>
                 </ul>

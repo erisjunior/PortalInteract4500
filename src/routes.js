@@ -1,11 +1,26 @@
-import { User, Reports } from 'pages'
+import { Profile, SendReport, Login, Reports } from 'pages'
 
-var routes = [
+const unloggedRoutes = [
+  {
+    path: '/login',
+    name: 'Login',
+    icon: 'nc-icon nc-single-02',
+    component: Login
+  }
+]
+
+const routes = [
   {
     path: '/perfil',
     name: 'Perfil',
     icon: 'nc-icon nc-single-02',
-    component: User
+    component: Profile
+  },
+  {
+    path: '/enviar-relatorio',
+    name: 'Enviar Relatório',
+    icon: 'nc-icon nc-send',
+    component: SendReport
   },
   {
     path: '/relatorios',
@@ -14,4 +29,5 @@ var routes = [
     component: Reports
   }
 ]
-export default routes
+
+export { routes, unloggedRoutes }

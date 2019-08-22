@@ -85,6 +85,32 @@
       "name": "Interact Club Arcoverde"
     }
   },
+  "users": {
+    "erisuser": {
+      "email": "erisvan.junior.a@gmail.com",
+      "password": "interactmns",
+      "club": "Interact Club de Master Natal-Sul",
+      "secretary": true,
+      "director": true,
+      "directory": "presidency"
+    },
+    "mnsuser": {
+      "email": "interactmns@gmail.com",
+      "password": "interactmns",
+      "club": "Interact Club de Master Natal-Sul",
+      "secretary": true,
+      "director": false,
+      "directory": null
+    },
+    "director": {
+      "email": "director@gmail.com",
+      "password": "interactmns",
+      "club": "Interact Club de Águas Belas",
+      "secretary": false,
+      "director": true,
+      "directory": "treasurer"
+    }
+  },
   "report": {
     "-Lmc4zcgVFLU_N1bjI6q": {
       "club": "Interact Club de Master Natal-Sul",

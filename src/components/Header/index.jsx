@@ -19,7 +19,7 @@ import {
   // Input
 } from 'reactstrap'
 
-import routes from 'routes.js'
+import { unloggedRoutes, routes } from 'routes.js'
 
 export default class Header extends Component {
   constructor(props) {
