@@ -143,4 +143,4 @@ export default class DQAForm extends Component {
   }
 }
 
-export default PresidentForm
+export default DQAForm
