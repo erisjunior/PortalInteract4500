@@ -39,6 +39,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { functions } = this.props
     return (
       <Context.Consumer>
         {({ user }) => {
@@ -54,8 +55,12 @@ class Dashboard extends Component {
               <div className='main-panel' ref={this.mainPanel}>
                 <Header {...this.props} />
                 <Switch>
-                  {routes.map(({ path, component }, key) => (
-                    <Route path={path} component={component} key={key} />
+                  {routes.map(({ path, component: Component }, key) => (
+                    <Route
+                      key={key}
+                      path={path}
+                      render={() => <Component functions={functions} />}
+                    />
                   ))}
                   <Redirect
                     from='*'

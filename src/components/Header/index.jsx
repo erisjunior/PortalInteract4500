@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+
+import { setStorage } from 'services/storage'
 
 import Context from 'services/context'
 
@@ -92,6 +93,16 @@ export default class Header extends Component {
       this.sidebarToggle.current.classList.toggle('toggled')
     }
   }
+
+  logout = async () => {
+    const { functions } = this.props
+
+    const user = { _data: {}, _isLogged: false }
+
+    await setStorage('PortalInteract:user', user)
+    await functions[0]()
+  }
+
   render() {
     const { location } = this.props
     const { color } = this.state
@@ -108,34 +119,39 @@ export default class Header extends Component {
               (color === 'transparent' ? 'navbar-transparent ' : '')
         }
       >
-        <Container fluid>
-          <div className='navbar-wrapper'>
-            <div className='navbar-toggle'>
-              <button
-                type='button'
-                ref={this.sidebarToggle}
-                className='navbar-toggler'
-                onClick={() => this.openSidebar()}
-              >
-                <span className='navbar-toggler-bar bar1' />
-                <span className='navbar-toggler-bar bar2' />
-                <span className='navbar-toggler-bar bar3' />
-              </button>
-            </div>
-            <Context.Consumer>
-              {({ user }) => (
+        <Context.Consumer>
+          {({ user }) => (
+            <Container fluid>
+              <div className='navbar-wrapper'>
+                <div className='navbar-toggle'>
+                  <button
+                    type='button'
+                    ref={this.sidebarToggle}
+                    className='navbar-toggler'
+                    onClick={() => this.openSidebar()}
+                  >
+                    <span className='navbar-toggler-bar bar1' />
+                    <span className='navbar-toggler-bar bar2' />
+                    <span className='navbar-toggler-bar bar3' />
+                  </button>
+                </div>
+
                 <NavbarBrand href='#!'>{this.getBrand(user)}</NavbarBrand>
-              )}
-            </Context.Consumer>
-          </div>
-          <Nav navbar>
-            <NavItem>
-              <Link to='#pablo' className='nav-link btn-rotate'>
-                <i className='fas fa-sign-out-alt' />
-              </Link>
-            </NavItem>
-          </Nav>
-          {/* 
+              </div>
+              <Nav navbar>
+                <NavItem>
+                  {user._isLogged && (
+                    <a
+                      href='#!'
+                      onClick={this.logout}
+                      className='nav-link btn-rotate'
+                    >
+                      <i className='fas fa-sign-out-alt' />
+                    </a>
+                  )}
+                </NavItem>
+              </Nav>
+              {/* 
           <NavbarToggler onClick={this.toggle}>
             <span className='navbar-toggler-bar navbar-kebab' />
             <span className='navbar-toggler-bar navbar-kebab' />
@@ -154,7 +170,7 @@ export default class Header extends Component {
             </form>
             <Nav navbar>
               <NavItem>
-                <Link to='#pablo' className='nav-link btn-magnify'>
+                <Link to='#' className='nav-link btn-magnify'>
                   <i className='nc-icon nc-layout-11' />
                   <p>
                     <span className='d-lg-none d-md-block'>Stats</span>
@@ -175,7 +191,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
-                <Link to='#pablo' className='nav-link btn-rotate'>
+                <Link to='#' className='nav-link btn-rotate'>
                   <i className='nc-icon nc-settings-gear-65' />
                   <p>
                     <span className='d-lg-none d-md-block'>Account</span>
@@ -184,7 +200,9 @@ export default class Header extends Component {
               </NavItem>
             </Nav>
           </Collapse> */}
-        </Container>
+            </Container>
+          )}
+        </Context.Consumer>
       </Navbar>
     )
   }

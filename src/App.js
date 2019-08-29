@@ -28,20 +28,29 @@ class App extends Component {
     clubs: []
   }
 
-  componentDidMount() {
-    const user = getStorage('PortalInteract:user')
-    if (user) this.setState({ user })
+  async componentDidMount() {
+    await this.getUserFromStorage()
 
     load('clubs', clubs => this.setState({ clubs }), 50)
     load('users', users => this.setState({ users }), 50)
   }
 
+  getUserFromStorage = async () => {
+    const user = await getStorage('PortalInteract:user')
+
+    if (user) this.setState({ user })
+  }
+
   render() {
+    const functions = [this.getUserFromStorage]
     return (
       <Context.Provider value={this.state}>
         <Router history={hist}>
           <Switch>
-            <Route path='/' render={props => <Dashboard {...props} />} />
+            <Route
+              path='/'
+              render={props => <Dashboard functions={functions} {...props} />}
+            />
             <Redirect from='*' to='/' />
           </Switch>
         </Router>

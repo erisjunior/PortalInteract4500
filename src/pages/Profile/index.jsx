@@ -2,47 +2,59 @@ import React, { Component } from 'react'
 
 import Context from 'services/context'
 
+import { formatDirectory } from 'helpers'
+
 import { Card, CardBody, Row, Col } from 'reactstrap'
 
 export default class Profile extends Component {
-  handleShowInformation = _data => (
-    <div className='content'>
-      <Row>
-        <Col md='12'>
-          <Card className='card-user'>
-            <div className='image'>
-              <img alt='...' src={require('assets/img/damir-bosnjak.jpg')} />
-            </div>
-            <CardBody>
-              <div className='author'>
-                <img
-                  alt='...'
-                  className='avatar border-gray'
-                  src={require('assets/img/default-avatar.png')}
-                />
-                <h5 className='title'>Erisvan Junior</h5>
-                <p className='description'>erisvan.junior.a@gmail.com</p>
-              </div>
-              <p className='description text-center'>
-                Interact Club de Master Natal-Sul
-                <br />
-                Secretário
-                <br /> Comissão Distrital: Presidência
-              </p>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </div>
-  )
-
   render() {
     return (
       <Context.Consumer>
-        {context => {
-          console.log(context)
+        {({ user }) => {
+          const {
+            name,
+            email,
+            club,
+            secretary,
+            director,
+            directory
+          } = user._data
 
-          return this.handleShowInformation(context)
+          return (
+            <div className='content'>
+              <Row>
+                <Col md='12'>
+                  <Card className='card-user'>
+                    <div className='image'>
+                      <img
+                        alt='...'
+                        src={require('assets/img/damir-bosnjak.jpg')}
+                      />
+                    </div>
+                    <CardBody>
+                      <div className='author'>
+                        <img
+                          alt='...'
+                          className='avatar border-gray'
+                          src={require('assets/img/default-avatar.png')}
+                        />
+                        <h5 className='title'>{name}</h5>
+                        <p className='description'>{email}</p>
+                      </div>
+                      <p className='description text-center'>
+                        {club}
+                        <br />
+                        {secretary && 'Secretário'}
+                        <br />{' '}
+                        {director &&
+                          `Comissão Distrital: ${formatDirectory(directory)}`}
+                      </p>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
+          )
         }}
       </Context.Consumer>
     )
