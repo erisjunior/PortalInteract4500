@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import Context from 'services/context'
+
 import {
   Navbar,
   NavbarBrand,
@@ -19,7 +21,7 @@ import {
   // Input
 } from 'reactstrap'
 
-import { unloggedRoutes, routes } from 'routes.js'
+import { unloggedRoutes, loggedRoutes } from 'routes.js'
 
 export default class Header extends Component {
   constructor(props) {
@@ -50,8 +52,11 @@ export default class Header extends Component {
     })
   }
 
-  getBrand = () => {
+  getBrand = ({ _isLogged }) => {
     let brandName = 'Default Brand'
+
+    const routes = _isLogged ? loggedRoutes : unloggedRoutes
+
     routes.map(({ path, name }) => {
       if (window.location.href.indexOf(path) !== -1) {
         brandName = name
@@ -117,7 +122,11 @@ export default class Header extends Component {
                 <span className='navbar-toggler-bar bar3' />
               </button>
             </div>
-            <NavbarBrand href='#!'>{this.getBrand()}</NavbarBrand>
+            <Context.Consumer>
+              {({ user }) => (
+                <NavbarBrand href='#!'>{this.getBrand(user)}</NavbarBrand>
+              )}
+            </Context.Consumer>
           </div>
           <Nav navbar>
             <NavItem>

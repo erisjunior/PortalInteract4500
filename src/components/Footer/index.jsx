@@ -52,7 +52,7 @@ export default class Footer extends Component {
                       target='_blank'
                     >
                       &copy; {1900 + new Date().getYear()}, developed by{' '}
-                      <i class='eris'>Erisvan Junior</i>
+                      <i className='eris'>Erisvan Junior</i>
                     </a>
                   </li>
                 </ul>

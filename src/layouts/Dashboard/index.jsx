@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+import Context from 'services/context'
+
 import { Sidebar, Header, Footer } from 'components'
 
-import { unloggedRoutes, routes } from 'routes.js'
+import { unloggedRoutes, loggedRoutes } from 'routes.js'
 
 var ps
 
@@ -38,24 +40,34 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className='wrapper'>
-        <Sidebar
-          {...this.props}
-          routes={routes}
-          bgColor='black'
-          activeColor='primary'
-        />
-        <div className='main-panel' ref={this.mainPanel}>
-          <Header {...this.props} />
-          <Switch>
-            {routes.map(({ path, component }, key) => (
-              <Route path={path} component={component} key={key} />
-            ))}
-            <Redirect from='*' to='/perfil' />
-          </Switch>
-          <Footer fluid />
-        </div>
-      </div>
+      <Context.Consumer>
+        {({ user }) => {
+          const routes = user._isLogged ? loggedRoutes : unloggedRoutes
+          return (
+            <div className='wrapper'>
+              <Sidebar
+                {...this.props}
+                routes={routes}
+                bgColor='black'
+                activeColor='primary'
+              />
+              <div className='main-panel' ref={this.mainPanel}>
+                <Header {...this.props} />
+                <Switch>
+                  {routes.map(({ path, component }, key) => (
+                    <Route path={path} component={component} key={key} />
+                  ))}
+                  <Redirect
+                    from='*'
+                    to={user._isLogged ? '/perfil' : '/login'}
+                  />
+                </Switch>
+                <Footer fluid />
+              </div>
+            </div>
+          )
+        }}
+      </Context.Consumer>
     )
   }
 }

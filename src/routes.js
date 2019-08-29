@@ -9,7 +9,7 @@ const unloggedRoutes = [
   }
 ]
 
-const routes = [
+const loggedRoutes = [
   {
     path: '/perfil',
     name: 'Perfil',
@@ -30,4 +30,4 @@ const routes = [
   }
 ]
 
-export { routes, unloggedRoutes }
+export { loggedRoutes, unloggedRoutes }
