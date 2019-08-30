@@ -39,11 +39,16 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { functions } = this.props
     return (
       <Context.Consumer>
         {({ user }) => {
-          const routes = user._isLogged ? loggedRoutes : unloggedRoutes
+          let routes = user._isLogged ? [] : unloggedRoutes
+
+          if (user._isLogged) {
+            const [profile, reports, sendReport] = loggedRoutes
+            routes.push(profile)
+            if (user._data.secretary) routes.push(sendReport, reports)
+          }
           return (
             <div className='wrapper'>
               <Sidebar
@@ -55,12 +60,8 @@ class Dashboard extends Component {
               <div className='main-panel' ref={this.mainPanel}>
                 <Header {...this.props} />
                 <Switch>
-                  {routes.map(({ path, component: Component }, key) => (
-                    <Route
-                      key={key}
-                      path={path}
-                      render={() => <Component functions={functions} />}
-                    />
+                  {routes.map(({ path, component }, key) => (
+                    <Route key={key} path={path} component={component} />
                   ))}
                   <Redirect
                     from='*'

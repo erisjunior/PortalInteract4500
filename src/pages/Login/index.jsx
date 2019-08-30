@@ -5,7 +5,7 @@ import { setStorage } from 'services/storage'
 
 import { Card, CardBody, Row, Col, FormGroup, Input, Button } from 'reactstrap'
 
-export default class Profile extends Component {
+export default class Login extends Component {
   state = {
     email: '',
     password: '',
@@ -18,9 +18,8 @@ export default class Profile extends Component {
     this.setState({ [name]: value })
   }
 
-  handleLogin = async users => {
+  handleLogin = async (users, setValue) => {
     const { email, password, loading } = this.state
-    const { functions } = this.props
 
     if (loading) return
 
@@ -34,7 +33,7 @@ export default class Profile extends Component {
       const user = { _data, _isLogged: true }
 
       await setStorage('PortalInteract:user', user)
-      await functions[0]()
+      await setValue({ user })
     } else {
       this.setState({ error: 'Credenciais erradas' })
     }
@@ -45,8 +44,8 @@ export default class Profile extends Component {
   render() {
     return (
       <Context.Consumer>
-        {({ users }) => (
-          <div className='content'>
+        {({ users, setValue }) => (
+          <div className='content' style={{ marginBottom: -40 }}>
             <Row>
               <Col md={{ size: 8, offset: 2 }}>
                 <Card className='card-user'>
@@ -90,7 +89,7 @@ export default class Profile extends Component {
                     </Row>
                     <div className='update ml-auto mr-auto'>
                       <Button
-                        onClick={() => this.handleLogin(users)}
+                        onClick={() => this.handleLogin(users, setValue)}
                         className='btn-round'
                         color='primary'
                         type='submit'

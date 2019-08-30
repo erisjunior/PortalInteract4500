@@ -53,10 +53,16 @@ export default class Header extends Component {
     })
   }
 
-  getBrand = ({ _isLogged }) => {
+  getBrand = ({ _isLogged, _data }) => {
     let brandName = 'Default Brand'
 
-    const routes = _isLogged ? loggedRoutes : unloggedRoutes
+    let routes = _isLogged ? [] : unloggedRoutes
+
+    if (_isLogged) {
+      const [profile, reports, sendReport] = loggedRoutes
+      routes.push(profile)
+      if (_data.secretary) routes.push(sendReport, reports)
+    }
 
     routes.map(({ path, name }) => {
       if (window.location.href.indexOf(path) !== -1) {
@@ -94,13 +100,11 @@ export default class Header extends Component {
     }
   }
 
-  logout = async () => {
-    const { functions } = this.props
-
+  logout = async setValue => {
     const user = { _data: {}, _isLogged: false }
 
     await setStorage('PortalInteract:user', user)
-    await functions[0]()
+    await setValue({ user })
   }
 
   render() {
@@ -120,7 +124,7 @@ export default class Header extends Component {
         }
       >
         <Context.Consumer>
-          {({ user }) => (
+          {({ user, setValue }) => (
             <Container fluid>
               <div className='navbar-wrapper'>
                 <div className='navbar-toggle'>
@@ -143,7 +147,7 @@ export default class Header extends Component {
                   {user._isLogged && (
                     <a
                       href='#!'
-                      onClick={this.logout}
+                      onClick={() => this.logout(setValue)}
                       className='nav-link btn-rotate'
                     >
                       <i className='fas fa-sign-out-alt' />

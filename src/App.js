@@ -17,6 +17,9 @@ const hist = createBrowserHistory()
 
 class App extends Component {
   state = {
+    setValue: newValue => {
+      this.setState({ ...newValue })
+    },
     user: {
       _data: {},
       _isLogged: false
@@ -37,20 +40,15 @@ class App extends Component {
 
   getUserFromStorage = async () => {
     const user = await getStorage('PortalInteract:user')
-
     if (user) this.setState({ user })
   }
 
   render() {
-    const functions = [this.getUserFromStorage]
     return (
       <Context.Provider value={this.state}>
         <Router history={hist}>
           <Switch>
-            <Route
-              path='/'
-              render={props => <Dashboard functions={functions} {...props} />}
-            />
+            <Route path='/' render={props => <Dashboard {...props} />} />
             <Redirect from='*' to='/' />
           </Switch>
         </Router>

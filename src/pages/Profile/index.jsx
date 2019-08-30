@@ -21,7 +21,7 @@ export default class Profile extends Component {
           } = user._data
 
           return (
-            <div className='content'>
+            <div className='content' style={{ marginBottom: -40 }}>
               <Row>
                 <Col md='12'>
                   <Card className='card-user'>
