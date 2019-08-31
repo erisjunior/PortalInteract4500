@@ -1,4 +1,4 @@
-import { Profile, SendReport, Login, Reports } from 'pages'
+import { Profile, SendReport, Login, Reports, Feedback } from 'pages'
 
 const unloggedRoutes = [
   {
@@ -27,6 +27,12 @@ const loggedRoutes = [
     name: 'Enviar Relatório',
     icon: 'nc-icon nc-send',
     component: SendReport
+  },
+  {
+    path: '/feedback',
+    name: 'Escrever Feedback',
+    icon: 'nc-icon nc-tag-content',
+    component: Feedback
   }
 ]
 

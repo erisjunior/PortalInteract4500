@@ -17,22 +17,10 @@ import {
 import { arrayOfMonths } from 'helpers'
 
 export default class Reports extends Component {
-  state = {
-    actualPage: 0,
-    month: 'Julho'
-  }
+  state = { month: 'Julho' }
 
   formatMonthOptions = () =>
     arrayOfMonths().map(month => <option key={month}>{month}</option>)
-
-  onClickContinue = () => {
-    const { actualPage } = this.state
-    this.setState({ actualPage: actualPage + 1 })
-  }
-  onClickBack = () => {
-    const { actualPage } = this.state
-    this.setState({ actualPage: actualPage - 1 })
-  }
 
   handleChange = (name, value) => {
     this.setState({ [name]: value })
@@ -79,6 +67,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {president.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={president.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Secretaria</CardTitle>
@@ -121,6 +123,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {secretary.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={secretary.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Tesouraria</CardTitle>
@@ -191,6 +207,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {treasurer.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={treasurer.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Diretor de Protocolo</CardTitle>
@@ -269,6 +299,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {adm.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={adm.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Projetos Humanitários</CardTitle>
@@ -313,6 +357,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {ph.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={ph.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Desenvolvimento do Quadro Associativo</CardTitle>
@@ -377,6 +435,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {dqa.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={dqa.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Fundação Rotária</CardTitle>
@@ -394,6 +466,20 @@ export default class Reports extends Component {
               <Input id='description' value={fr.description} disabled />
             </FormGroup>
           </Col>
+          {fr.feedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={fr.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
       </div>
     )

@@ -59,9 +59,10 @@ export default class Header extends Component {
     let routes = _isLogged ? [] : unloggedRoutes
 
     if (_isLogged) {
-      const [profile, reports, sendReport] = loggedRoutes
+      const [profile, reports, sendReport, feedback] = loggedRoutes
       routes.push(profile)
       if (_data.secretary) routes.push(sendReport, reports)
+      if (_data.director) routes.push(feedback)
     }
 
     routes.map(({ path, name }) => {

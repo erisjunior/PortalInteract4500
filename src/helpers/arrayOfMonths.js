@@ -1,7 +1,7 @@
 export default () => [
   'Julho',
   'Agosto',
-  'Setembr',
+  'Setembro',
   'Outubro',
   'Novembro',
   'Dezembro',

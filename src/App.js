@@ -70,7 +70,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <Context.Provider value={this.state}>
         <Router history={hist}>

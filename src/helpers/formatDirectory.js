@@ -1,6 +1,6 @@
 export default directory => {
   switch (directory) {
-    case 'presidency':
+    case 'president':
       return 'Presidência'
     case 'treasurer':
       return 'Tesouraria'

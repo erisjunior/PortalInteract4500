@@ -45,9 +45,10 @@ class Dashboard extends Component {
           let routes = user._isLogged ? [] : unloggedRoutes
 
           if (user._isLogged) {
-            const [profile, reports, sendReport] = loggedRoutes
+            const [profile, reports, sendReport, feedback] = loggedRoutes
             routes.push(profile)
             if (user._data.secretary) routes.push(sendReport, reports)
+            if (user._data.director) routes.push(feedback)
           }
           return (
             <div className='wrapper'>
