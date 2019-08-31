@@ -12,7 +12,7 @@ export default directory => {
       return 'Desenvolvimento do Quadro Associativo'
     case 'ph':
       return 'Projetos Humanitários'
-    case 'ph':
+    case 'ip':
       return 'Imagem Pública'
     case 'fr':
       return 'Fundação Rotária'

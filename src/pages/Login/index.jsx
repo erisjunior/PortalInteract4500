@@ -34,6 +34,29 @@ export default class Login extends Component {
 
       await setStorage('PortalInteract:user', user)
       await setValue({ user })
+
+      if (user.secretary) {
+        load(
+          'reports',
+          tempReports => {
+            const clubReports = tempReports.filter(
+              ({ club }) => club === user.club
+            )
+            await setValue({ clubReports })
+          },
+          100
+        )
+      }
+      if (user.director) {
+        load(
+          'reports',
+          tempReports => {
+            const directorReports = tempReports
+            await setValue({ directorReports })
+          },
+          100
+        )
+      }
     } else {
       this.setState({ error: 'Credenciais erradas' })
     }

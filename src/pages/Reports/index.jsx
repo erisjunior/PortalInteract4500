@@ -47,9 +47,7 @@ export default class Reports extends Component {
     this.setState({ actualPage: actualPage - 1 })
   }
 
-  showContent = () => {
-    const { actualPage } = this.state
-  }
+  showContent = () => {}
 
   render() {
     return (

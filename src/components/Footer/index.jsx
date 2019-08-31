@@ -24,7 +24,7 @@ export default class Footer extends Component {
                 </li>
                 <li>
                   <a
-                    href='drive.google.com/open?id=1bIDu3b1QMJ9jHuklQ96p7J-QIaDfVrzT'
+                    href='https://drive.google.com/open?id=1bIDu3b1QMJ9jHuklQ96p7J-QIaDfVrzT'
                     target='_blank'
                     rel='noopener noreferrer'
                   >

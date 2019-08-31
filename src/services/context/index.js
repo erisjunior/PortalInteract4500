@@ -6,6 +6,9 @@ export default createContext({
     _isLogged: false
   },
 
+  clubReports: [],
+  directorReports: [],
+
   report: {},
 
   users: [],

@@ -25,6 +25,9 @@ class App extends Component {
       _isLogged: false
     },
 
+    clubReports: [],
+    directorReports: [],
+
     report: {},
 
     users: [],
@@ -35,12 +38,37 @@ class App extends Component {
     await this.getUserFromStorage()
 
     load('clubs', clubs => this.setState({ clubs }), 50)
-    load('users', users => this.setState({ users }), 50)
+    load('users', users => this.setState({ users }), 100)
   }
 
   getUserFromStorage = async () => {
     const user = await getStorage('PortalInteract:user')
-    if (user) this.setState({ user })
+    if (user) {
+      this.setState({ user })
+
+      if (user.secretary) {
+        load(
+          'reports',
+          tempReports => {
+            const clubReports = tempReports.filter(
+              ({ club }) => club === user.club
+            )
+            this.setState({ clubReports })
+          },
+          100
+        )
+      }
+      if (user.director) {
+        load(
+          'reports',
+          tempReports => {
+            const directorReports = tempReports
+            this.setState({ directorReports })
+          },
+          100
+        )
+      }
+    }
   }
 
   render() {

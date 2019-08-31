@@ -1,9 +1,5 @@
 import { firebaseDatabase } from './config'
 
-function save(path, data) {
-  return firebaseDatabase.ref(path).push(data)
-}
-
 function load(path, callback, size = 10) {
   let query = firebaseDatabase.ref(path).limitToLast(size)
 
@@ -18,27 +14,16 @@ function load(path, callback, size = 10) {
   })
 }
 
-function remove(id, node) {
-  return firebaseDatabase.ref(`${node}/${id}`).remove()
+function save(path, data) {
+  return firebaseDatabase.ref(path).push(data)
 }
 
-const login = () => {
-  // auth.signInWithPopup(googleProvider).then(result => {
-  //   const { user } = result
-  //   this.setState({ user })
-  // })
+function update(path, data, key) {
+  return firebaseDatabase.ref(`${path}/${key}`).update(data)
 }
 
-const logout = () => {
-  // auth.signOut().then(() => {
-  //   this.setState({ user: null })
-  // })
+function remove(path, key) {
+  return firebaseDatabase.ref(`${path}/${key}`).remove()
 }
 
-export { save, load, remove, logout, login }
-
-// auth.onAuthStateChanged(user => {
-//   if (user) {
-//     this.setState({ user })
-//   }
-// })
+export { save, load, remove, update }
