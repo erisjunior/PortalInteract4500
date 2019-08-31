@@ -36,19 +36,19 @@ export default class Login extends Component {
       await setStorage('PortalInteract:user', user)
       await setValue({ user })
 
-      if (user.secretary) {
+      if (user._data.secretary) {
         load(
           'reports',
           async tempReports => {
             const clubReports = tempReports.filter(
-              ({ club }) => club === user.club
+              ({ club }) => club === user._data.club
             )
             await setValue({ clubReports })
           },
           100
         )
       }
-      if (user.director) {
+      if (user._data.director) {
         load(
           'reports',
           async tempReports => {

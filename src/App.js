@@ -28,8 +28,6 @@ class App extends Component {
     clubReports: [],
     directorReports: [],
 
-    report: {},
-
     users: [],
     clubs: []
   }
@@ -46,19 +44,19 @@ class App extends Component {
     if (user) {
       this.setState({ user })
 
-      if (user.secretary) {
+      if (user._data.secretary) {
         load(
           'reports',
           tempReports => {
             const clubReports = tempReports.filter(
-              ({ club }) => club === user.club
+              ({ club }) => club === user._data.club
             )
             this.setState({ clubReports })
           },
           100
         )
       }
-      if (user.director) {
+      if (user._data.director) {
         load(
           'reports',
           tempReports => {
@@ -72,6 +70,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <Context.Provider value={this.state}>
         <Router history={hist}>

@@ -131,50 +131,52 @@ export default class SendReport extends Component {
     const { actualPage, report } = this.state
 
     return (
-      <div className='content'>
-        <Row>
-          <Col md='12'>
-            <Card className='demo-icons'>
-              <CardHeader>
-                <CardTitle tag='h5'>Interact Club Master Natal Sul</CardTitle>
-                <Col md='4'>
-                  <FormGroup row>
-                    <Label for='exampleSelect'>Mês</Label>
-                    <Input
-                      onChange={e => this.handleChange('month', e.target.value)}
-                      value={report.month}
-                      type='select'
-                      name='select'
-                      id='exampleSelect'
+      <Context.Consumer>
+        {({ user, setValue }) => (
+          <div className='content'>
+            <Row>
+              <Col md='12'>
+                <Card className='demo-icons'>
+                  <CardHeader>
+                    <CardTitle tag='h5'>{user._data.club}</CardTitle>
+                    <Col md='4'>
+                      <FormGroup row>
+                        <Label for='exampleSelect'>Mês</Label>
+                        <Input
+                          onChange={e =>
+                            this.handleChange('month', e.target.value)
+                          }
+                          value={report.month}
+                          type='select'
+                          name='select'
+                          id='exampleSelect'
+                        >
+                          {this.formatMonthOptions()}
+                        </Input>
+                      </FormGroup>
+                    </Col>
+                  </CardHeader>
+                  <CardBody>
+                    {this.showContent()}
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                      }}
                     >
-                      {this.formatMonthOptions()}
-                    </Input>
-                  </FormGroup>
-                </Col>
-              </CardHeader>
-              <CardBody>
-                {this.showContent()}
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  {actualPage > 0 && (
-                    <Button onClick={this.onClickBack} color='info'>
-                      Voltar
-                    </Button>
-                  )}
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'flex-end',
-                      flex: 1
-                    }}
-                  >
-                    {actualPage < 9 && (
-                      <Context.Consumer>
-                        {({ user, setValue }) => (
+                      {actualPage > 0 && (
+                        <Button onClick={this.onClickBack} color='info'>
+                          Voltar
+                        </Button>
+                      )}
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'flex-end',
+                          flex: 1
+                        }}
+                      >
+                        {actualPage < 9 && (
                           <Button
                             onClick={() => this.onClickContinue(user, setValue)}
                             color='info'
@@ -182,15 +184,15 @@ export default class SendReport extends Component {
                             {actualPage < 8 ? 'Continuar' : 'Enviar'}
                           </Button>
                         )}
-                      </Context.Consumer>
-                    )}
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
+          </div>
+        )}
+      </Context.Consumer>
     )
   }
 }
