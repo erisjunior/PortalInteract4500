@@ -12,18 +12,25 @@ import {
 } from 'reactstrap'
 
 class DQAForm extends Component {
-  state = {
-    dqa: '',
-    dqaDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const dqa = { ...report.dqa, [name]: value }
+    handleChange('dqa', dqa)
   }
 
   render() {
-    const { dqaDescription, dqa } = this.state
+    const {
+      sponsor,
+      description,
+      init,
+      news,
+      license,
+      out,
+      getOut,
+      finish
+    } = this.props.report.dqa
 
     return (
       <>
@@ -31,12 +38,12 @@ class DQAForm extends Component {
           <CardTitle tag='h5'>Desenvolvimento do Quadro Associativo</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='dqa'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='dqa'
-                id='dqa'
-                value={dqa}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -47,36 +54,36 @@ class DQAForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='dqa'>N° de associados no início do mês</Label>
+                <Label for='init'>N° de associados no início do mês</Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='init'
+                  id='init'
+                  value={init}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='dqa'>N° de admissões no mês</Label>
+                <Label for='news'>N° de admissões no mês</Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='news'
+                  id='news'
+                  value={news}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='4'>
               <FormGroup>
-                <Label for='dqa'>N° de associado em licença no mês</Label>
+                <Label for='license'>N° de associado em licença no mês</Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='license'
+                  id='license'
+                  value={license}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -85,36 +92,38 @@ class DQAForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='dqa'>N° de saídas no mês</Label>
+                <Label for='out'>N° de saídas no mês</Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='out'
+                  id='out'
+                  value={out}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='dqa'>N° de demissões no mês</Label>
+                <Label for='getOut'>N° de demissões no mês</Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='getOut'
+                  id='getOut'
+                  value={getOut}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='4'>
               <FormGroup>
-                <Label for='dqa'>N° de associados no último dia do mês</Label>
+                <Label for='finish'>
+                  N° de associados no último dia do mês
+                </Label>
                 <Input
-                  type='text'
-                  name='dqa'
-                  id='dqa'
-                  value={dqa}
+                  type='number'
+                  name='finish'
+                  id='finish'
+                  value={finish}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -122,12 +131,12 @@ class DQAForm extends Component {
           </Row>
           <Col md='10'>
             <FormGroup row>
-              <Label for='dqaDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='dqaDescription'
-                id='dqaDescription'
-                value={dqaDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Context from 'services/context'
+import { load } from 'services/firebase'
 import { setStorage } from 'services/storage'
 
 import { Card, CardBody, Row, Col, FormGroup, Input, Button } from 'reactstrap'
@@ -38,7 +39,7 @@ export default class Login extends Component {
       if (user.secretary) {
         load(
           'reports',
-          tempReports => {
+          async tempReports => {
             const clubReports = tempReports.filter(
               ({ club }) => club === user.club
             )
@@ -50,7 +51,7 @@ export default class Login extends Component {
       if (user.director) {
         load(
           'reports',
-          tempReports => {
+          async tempReports => {
             const directorReports = tempReports
             await setValue({ directorReports })
           },

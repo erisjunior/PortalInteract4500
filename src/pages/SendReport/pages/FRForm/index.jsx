@@ -11,18 +11,16 @@ import {
 } from 'reactstrap'
 
 class FRForm extends Component {
-  state = {
-    fr: '',
-    frDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const fr = { ...report.fr, [name]: value }
+    handleChange('fr', fr)
   }
 
   render() {
-    const { frDescription, fr } = this.state
+    const { sponsor, description } = this.props.report.fr
 
     return (
       <>
@@ -30,12 +28,12 @@ class FRForm extends Component {
           <CardTitle tag='h5'>Fundação Rotária</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='fr'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='fr'
-                id='fr'
-                value={fr}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -45,12 +43,12 @@ class FRForm extends Component {
         <CardBody>
           <Col md='10'>
             <FormGroup row>
-              <Label for='frDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='frDescription'
-                id='frDescription'
-                value={frDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />

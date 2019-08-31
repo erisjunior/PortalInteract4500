@@ -11,18 +11,16 @@ import {
 } from 'reactstrap'
 
 class IPForm extends Component {
-  state = {
-    ip: '',
-    ipDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const ip = { ...report.ip, [name]: value }
+    handleChange('ip', ip)
   }
 
   render() {
-    const { ipDescription, ip } = this.state
+    const { sponsor, description } = this.props.report.ip
 
     return (
       <>
@@ -30,12 +28,12 @@ class IPForm extends Component {
           <CardTitle tag='h5'>Imagem Pública</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='ip'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='ip'
-                id='ip'
-                value={ip}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -45,12 +43,12 @@ class IPForm extends Component {
         <CardBody>
           <Col md='10'>
             <FormGroup row>
-              <Label for='ipDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='ipDescription'
-                id='ipDescription'
-                value={ipDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />

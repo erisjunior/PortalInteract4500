@@ -11,18 +11,16 @@ import {
 } from 'reactstrap'
 
 class PHForm extends Component {
-  state = {
-    ph: '',
-    phDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const ph = { ...report.ph, [name]: value }
+    handleChange('ph', ph)
   }
 
   render() {
-    const { phDescription, ph } = this.state
+    const { sponsor, description } = this.props.report.ph
 
     return (
       <>
@@ -30,12 +28,12 @@ class PHForm extends Component {
           <CardTitle tag='h5'>Projetos Humanitários</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='ph'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='ph'
-                id='ph'
-                value={ph}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -45,12 +43,12 @@ class PHForm extends Component {
         <CardBody>
           <Col md='10'>
             <FormGroup row>
-              <Label for='phDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='phDescription'
-                id='phDescription'
-                value={phDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />

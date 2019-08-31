@@ -11,18 +11,16 @@ import {
 } from 'reactstrap'
 
 class PresidentForm extends Component {
-  state = {
-    president: '',
-    presidentDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const president = { ...report.president, [name]: value }
+    handleChange('president', president)
   }
 
   render() {
-    const { presidentDescription, president } = this.state
+    const { sponsor, description } = this.props.report.president
 
     return (
       <>
@@ -30,12 +28,12 @@ class PresidentForm extends Component {
           <CardTitle tag='h5'>Presidência</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='president'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='president'
-                id='president'
-                value={president}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -45,14 +43,12 @@ class PresidentForm extends Component {
         <CardBody>
           <Col md='10'>
             <FormGroup row>
-              <Label for='presidentDescription'>
-                Descrição das atividades:
-              </Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='presidentDescription'
-                id='presidentDescription'
-                value={presidentDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do presidente...'
                 onChange={this.handleChange}
               />

@@ -9,8 +9,6 @@ export default createContext({
   clubReports: [],
   directorReports: [],
 
-  report: {},
-
   users: [],
   clubs: []
 })

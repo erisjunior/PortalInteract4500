@@ -12,18 +12,24 @@ import {
 } from 'reactstrap'
 
 class ADMForm extends Component {
-  state = {
-    adm: '',
-    admDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const adm = { ...report.adm, [name]: value }
+    handleChange('adm', adm)
   }
 
   render() {
-    const { admDescription, adm } = this.state
+    const {
+      sponsor,
+      description,
+      ordinary,
+      extraordinary,
+      council,
+      frequency,
+      bulletin
+    } = this.props.report.adm
 
     return (
       <>
@@ -31,12 +37,12 @@ class ADMForm extends Component {
           <CardTitle tag='h5'>Administração</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='adm'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='adm'
-                id='adm'
-                value={adm}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -47,36 +53,36 @@ class ADMForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='adm'>Reuniões ordinárias</Label>
+                <Label for='ordinary'>Reuniões ordinárias</Label>
                 <Input
-                  type='text'
-                  name='adm'
-                  id='adm'
-                  value={adm}
+                  type='number'
+                  name='ordinary'
+                  id='ordinary'
+                  value={ordinary}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='adm'>Reuniões extraordinárias</Label>
+                <Label for='extraordinary'>Reuniões extraordinárias</Label>
                 <Input
-                  type='text'
-                  name='adm'
-                  id='adm'
-                  value={adm}
+                  type='number'
+                  name='extraordinary'
+                  id='extraordinary'
+                  value={extraordinary}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='4'>
               <FormGroup>
-                <Label for='adm'>Reuniões do conselho diretor</Label>
+                <Label for='council'>Reuniões do conselho diretor</Label>
                 <Input
-                  type='text'
-                  name='adm'
-                  id='adm'
-                  value={adm}
+                  type='number'
+                  name='council'
+                  id='council'
+                  value={council}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -85,24 +91,24 @@ class ADMForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='adm'>Frequência mensal (%)</Label>
+                <Label for='frequency'>Frequência mensal (%)</Label>
                 <Input
-                  type='text'
-                  name='adm'
-                  id='adm'
-                  value={adm}
+                  type='number'
+                  name='frequency'
+                  id='frequency'
+                  value={frequency}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='adm'>N°de boletins publicados no mês</Label>
+                <Label for='bulletin'>N°de boletins publicados no mês</Label>
                 <Input
-                  type='text'
-                  name='adm'
-                  id='adm'
-                  value={adm}
+                  type='number'
+                  name='bulletin'
+                  id='bulletin'
+                  value={bulletin}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -110,12 +116,12 @@ class ADMForm extends Component {
           </Row>
           <Col md='10'>
             <FormGroup row>
-              <Label for='admDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='admDescription'
-                id='admDescription'
-                value={admDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />

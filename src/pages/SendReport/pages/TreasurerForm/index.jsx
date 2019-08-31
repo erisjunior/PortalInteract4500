@@ -12,18 +12,23 @@ import {
 } from 'reactstrap'
 
 class TreasurerForm extends Component {
-  state = {
-    treasurer: '',
-    treasurerDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const treasurer = { ...report.treasurer, [name]: value }
+    handleChange('treasurer', treasurer)
   }
 
   render() {
-    const { treasurerDescription, treasurer } = this.state
+    const {
+      sponsor,
+      description,
+      monthly,
+      inDayMonthly,
+      preBalance,
+      balance
+    } = this.props.report.treasurer
 
     return (
       <>
@@ -31,12 +36,12 @@ class TreasurerForm extends Component {
           <CardTitle tag='h5'>Tesouraria</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='treasurer'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='treasurer'
-                id='treasurer'
-                value={treasurer}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -47,24 +52,24 @@ class TreasurerForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='treasurer'>Mensalidades (R$)</Label>
+                <Label for='monthly'>Mensalidades (R$)</Label>
                 <Input
-                  type='text'
-                  name='treasurer'
-                  id='treasurer'
-                  value={treasurer}
+                  type='number'
+                  name='monthly'
+                  id='monthly'
+                  value={monthly}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='treasurer'>Mensalidades no prazo (%)</Label>
+                <Label for='inDayMonthly'>Mensalidades no prazo (%)</Label>
                 <Input
-                  type='text'
-                  name='treasurer'
-                  id='treasurer'
-                  value={treasurer}
+                  type='number'
+                  name='inDayMonthly'
+                  id='inDayMonthly'
+                  value={inDayMonthly}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -73,24 +78,24 @@ class TreasurerForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='treasurer'>Saldo do mês anterior (R$)</Label>
+                <Label for='preBalance'>Saldo do mês anterior (R$)</Label>
                 <Input
-                  type='text'
-                  name='treasurer'
-                  id='treasurer'
-                  value={treasurer}
+                  type='number'
+                  name='preBalance'
+                  id='preBalance'
+                  value={preBalance}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='treasurer'>Saldo do mês atual (R$)</Label>
+                <Label for='balance'>Saldo do mês atual (R$)</Label>
                 <Input
-                  type='text'
-                  name='treasurer'
-                  id='treasurer'
-                  value={treasurer}
+                  type='number'
+                  name='balance'
+                  id='balance'
+                  value={balance}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -98,14 +103,12 @@ class TreasurerForm extends Component {
           </Row>
           <Col md='10'>
             <FormGroup row>
-              <Label for='treasurerDescription'>
-                Descrição das atividades:
-              </Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='treasurerDescription'
-                id='treasurerDescription'
-                value={treasurerDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do tesoureiro...'
                 onChange={this.handleChange}
               />

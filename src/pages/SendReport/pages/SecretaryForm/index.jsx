@@ -12,18 +12,22 @@ import {
 } from 'reactstrap'
 
 class SecretaryForm extends Component {
-  state = {
-    secretary: '',
-    secretaryDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const secretary = { ...report.secretary, [name]: value }
+    handleChange('secretary', secretary)
   }
 
   render() {
-    const { secretaryDescription, secretary } = this.state
+    const {
+      sponsor,
+      description,
+      offices,
+      inMail,
+      outMail
+    } = this.props.report.secretary
 
     return (
       <>
@@ -31,12 +35,12 @@ class SecretaryForm extends Component {
           <CardTitle tag='h5'>Secretaria</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='secretary'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='secretary'
-                id='secretary'
-                value={secretary}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -47,36 +51,36 @@ class SecretaryForm extends Component {
           <Row>
             <Col md='3'>
               <FormGroup>
-                <Label for='secretary'>Nº de ofícios expedidos</Label>
+                <Label for='offices'>Nº de ofícios expedidos</Label>
                 <Input
-                  type='text'
-                  name='secretary'
-                  id='secretary'
-                  value={secretary}
+                  type='number'
+                  name='offices'
+                  id='offices'
+                  value={offices}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='3'>
               <FormGroup>
-                <Label for='secretary'>Nº de correspondências enviadas</Label>
+                <Label for='inMail'>Nº de correspondências enviadas</Label>
                 <Input
-                  type='text'
-                  name='secretary'
-                  id='secretary'
-                  value={secretary}
+                  type='number'
+                  name='inMail'
+                  id='inMail'
+                  value={inMail}
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md='4'>
               <FormGroup>
-                <Label for='secretary'>Nº de correspondências recebidas</Label>
+                <Label for='outMail'>Nº de correspondências recebidas</Label>
                 <Input
-                  type='text'
-                  name='secretary'
-                  id='secretary'
-                  value={secretary}
+                  type='number'
+                  name='outMail'
+                  id='outMail'
+                  value={outMail}
                   onChange={this.handleChange}
                 />
               </FormGroup>
@@ -84,14 +88,12 @@ class SecretaryForm extends Component {
           </Row>
           <Col md='10'>
             <FormGroup row>
-              <Label for='secretaryDescription'>
-                Descrição das atividades:
-              </Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='secretaryDescription'
-                id='secretaryDescription'
-                value={secretaryDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do secretário...'
                 onChange={this.handleChange}
               />

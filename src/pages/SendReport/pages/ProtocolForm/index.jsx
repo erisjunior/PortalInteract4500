@@ -11,18 +11,16 @@ import {
 } from 'reactstrap'
 
 class ProtocolForm extends Component {
-  state = {
-    protocol: '',
-    protocolDescription: ''
-  }
-
   handleChange = ({ target }) => {
+    const { handleChange, report } = this.props
     const { value, name } = target
-    this.setState({ [name]: value })
+
+    const protocol = { ...report.protocol, [name]: value }
+    handleChange('protocol', protocol)
   }
 
   render() {
-    const { protocolDescription, protocol } = this.state
+    const { sponsor, description } = this.props.report.protocol
 
     return (
       <>
@@ -30,12 +28,12 @@ class ProtocolForm extends Component {
           <CardTitle tag='h5'>Diretor de Protocolo</CardTitle>
           <Col md='4'>
             <FormGroup row>
-              <Label for='protocol'>Responsável</Label>
+              <Label for='sponsor'>Responsável</Label>
               <Input
                 type='text'
-                name='protocol'
-                id='protocol'
-                value={protocol}
+                name='sponsor'
+                id='sponsor'
+                value={sponsor}
                 placeholder='Nome do Responsável'
                 onChange={this.handleChange}
               />
@@ -45,12 +43,12 @@ class ProtocolForm extends Component {
         <CardBody>
           <Col md='10'>
             <FormGroup row>
-              <Label for='protocolDescription'>Descrição das atividades:</Label>
+              <Label for='description'>Descrição das atividades:</Label>
               <Input
                 type='textarea'
-                name='protocolDescription'
-                id='protocolDescription'
-                value={protocolDescription}
+                name='description'
+                id='description'
+                value={description}
                 placeholder='Palavra do diretor...'
                 onChange={this.handleChange}
               />
