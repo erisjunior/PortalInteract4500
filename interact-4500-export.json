@@ -4,38 +4,6 @@
       "id": 1,
       "name": "Interact Club de Master Natal-Sul"
     },
-    "club2": {
-      "id": 2,
-      "name": "Interact Club de Pau dos Ferros"
-    },
-    "club3": {
-      "id": 3,
-      "name": "Interact Club Recife Encanta Moça"
-    },
-    "club4": {
-      "id": 4,
-      "name": "Interact Club João Pessoa Sul"
-    },
-    "club5": {
-      "id": 5,
-      "name": "Interact Club de Surubim-Centro"
-    },
-    "club6": {
-      "id": 6,
-      "name": "Interact Club de São Miguel"
-    },
-    "club7": {
-      "id": 7,
-      "name": "Interact Club de São José do Egito"
-    },
-    "club8": {
-      "id": 8,
-      "name": "Interact Club de São João do Rio do Peixe"
-    },
-    "club9": {
-      "id": 9,
-      "name": "Interact Club de Pombal"
-    },
     "club10": {
       "id": 10,
       "name": "Interact Club de Piancó do Centenário"
@@ -76,6 +44,10 @@
       "id": 19,
       "name": "Interact Club de Águas Belas"
     },
+    "club2": {
+      "id": 2,
+      "name": "Interact Club de Pau dos Ferros"
+    },
     "club20": {
       "id": 20,
       "name": "Interact Club Bom Conselho"
@@ -83,40 +55,315 @@
     "club21": {
       "id": 21,
       "name": "Interact Club Arcoverde"
+    },
+    "club3": {
+      "id": 3,
+      "name": "Interact Club Recife Encanta Moça"
+    },
+    "club4": {
+      "id": 4,
+      "name": "Interact Club João Pessoa Sul"
+    },
+    "club5": {
+      "id": 5,
+      "name": "Interact Club de Surubim-Centro"
+    },
+    "club6": {
+      "id": 6,
+      "name": "Interact Club de São Miguel"
+    },
+    "club7": {
+      "id": 7,
+      "name": "Interact Club de São José do Egito"
+    },
+    "club8": {
+      "id": 8,
+      "name": "Interact Club de São João do Rio do Peixe"
+    },
+    "club9": {
+      "id": 9,
+      "name": "Interact Club de Pombal"
     }
   },
   "users": {
-    "erisuser": {
-      "email": "erisvan.junior.a@gmail.com",
-      "password": "interactmns",
+    "clubmns": {
+      "id": 1,
+      "name": "Interact Club de Master Natal-Sul",
       "club": "Interact Club de Master Natal-Sul",
-      "secretary": true,
-      "director": true,
-      "directory": "presidency"
-    },
-    "mnsuser": {
+      "director": false,
       "email": "interactmns@gmail.com",
       "password": "interactmns",
-      "club": "Interact Club de Master Natal-Sul",
-      "secretary": true,
-      "director": false,
-      "directory": null
+      "secretary": true
     },
-    "director": {
-      "email": "director@gmail.com",
-      "password": "interactmns",
+    "clubpc": {
+      "id": 10,
+      "name": "Interact Club de Piancó do Centenário",
+      "club": "Interact Club de Piancó do Centenário",
+      "director": false,
+      "email": "interactpc@gmail.com",
+      "password": "interactpc",
+      "secretary": true
+    },
+    "clubps": {
+      "id": 11,
+      "name": "Interact Club de Patos-Sul",
+      "club": "Interact Club de Patos-Sul",
+      "director": false,
+      "email": "interactps@gmail.com",
+      "password": "interactps",
+      "secretary": true
+    },
+    "clubpn": {
+      "id": 12,
+      "name": "Interact Club de Patos-Norte",
+      "club": "Interact Club de Patos-Norte",
+      "director": false,
+      "email": "interactpn@gmail.com",
+      "password": "interactpn",
+      "secretary": true
+    },
+    "clubita": {
+      "id": 13,
+      "name": "Interact Club de Itapetim",
+      "club": "Interact Club de Itapetim",
+      "director": false,
+      "email": "interactita@gmail.com",
+      "password": "interactita",
+      "secretary": true
+    },
+    "clubcr": {
+      "id": 14,
+      "name": "Interact Club de Catolé do Rocha",
+      "club": "Interact Club de Catolé do Rocha",
+      "director": false,
+      "email": "interactcr@gmail.com",
+      "password": "interactcr",
+      "secretary": true
+    },
+    "clubcz": {
+      "id": 15,
+      "name": "Interact Club de Cajazeiras-Centro",
+      "club": "Interact Club de Cajazeiras-Centro",
+      "director": false,
+      "email": "interactcz@gmail.com",
+      "password": "interactcz",
+      "secretary": true
+    },
+    "clubcc": {
+      "id": 16,
+      "name": "Interact Club de Caicó-Centenário",
+      "club": "Interact Club de Caicó-Centenário",
+      "director": false,
+      "email": "interactcc@gmail.com",
+      "password": "interactcc",
+      "secretary": true
+    },
+    "clubbj": {
+      "id": 17,
+      "name": "Interact Club de Belo Jardim",
+      "club": "Interact Club de Belo Jardim",
+      "director": false,
+      "email": "interactbj@gmail.com",
+      "password": "interactbj",
+      "secretary": true
+    },
+    "clubara": {
+      "id": 18,
+      "name": "Interact Club de Araripina",
+      "club": "Interact Club de Araripina",
+      "director": false,
+      "email": "interactara@gmail.com",
+      "password": "interactara",
+      "secretary": true
+    },
+    "clubab": {
+      "id": 19,
+      "name": "Interact Club de Águas Belas",
       "club": "Interact Club de Águas Belas",
-      "secretary": false,
+      "director": false,
+      "email": "interactab@gmail.com",
+      "password": "interactab",
+      "secretary": true
+    },
+    "clubpdf": {
+      "id": 2,
+      "name": "Interact Club de Pau dos Ferros",
+      "club": "Interact Club de Pau dos Ferros",
+      "director": false,
+      "email": "interactpdf@gmail.com",
+      "password": "interactpdf",
+      "secretary": true
+    },
+    "clubbc": {
+      "id": 20,
+      "name": "Interact Club Bom Conselho",
+      "club": "Interact Club Bom Conselho",
+      "director": false,
+      "email": "interactbc@gmail.com",
+      "password": "interactbc",
+      "secretary": true
+    },
+    "club21": {
+      "id": 21,
+      "name": "Interact Club Arcoverde",
+      "club": "Interact Club Arcoverde",
+      "director": false,
+      "email": "interactav@gmail.com",
+      "password": "interactav",
+      "secretary": true
+    },
+    "club3": {
+      "id": 3,
+      "name": "Interact Club Recife Encanta Moça",
+      "club": "Interact Club Recife Encanta Moça",
+      "director": false,
+      "email": "interactrem@gmail.com",
+      "password": "interactrem",
+      "secretary": true
+    },
+    "club4": {
+      "id": 4,
+      "name": "Interact Club João Pessoa Sul",
+      "club": "Interact Club João Pessoa Sul",
+      "director": false,
+      "email": "interactjps@gmail.com",
+      "password": "interactjps",
+      "secretary": true
+    },
+    "club5": {
+      "id": 5,
+      "name": "Interact Club de Surubim-Centro",
+      "club": "Interact Club de Surubim-Centro",
+      "director": false,
+      "email": "interactsc@gmail.com",
+      "password": "interactsc",
+      "secretary": true
+    },
+    "club6": {
+      "id": 6,
+      "name": "Interact Club de São Miguel",
+      "club": "Interact Club de São Miguel",
+      "director": false,
+      "email": "interactsm@gmail.com",
+      "password": "interactsm",
+      "secretary": true
+    },
+    "club7": {
+      "id": 7,
+      "name": "Interact Club de São José do Egito",
+      "club": "Interact Club de São José do Egito",
+      "director": false,
+      "email": "interactsje@gmail.com",
+      "password": "interactsje",
+      "secretary": true
+    },
+    "club8": {
+      "id": 8,
+      "name": "Interact Club de São João do Rio do Peixe",
+      "club": "Interact Club de São João do Rio do Peixe",
+      "director": false,
+      "email": "interactsjrp@gmail.com",
+      "password": "interactsjrp",
+      "secretary": true
+    },
+    "club9": {
+      "id": 9,
+      "name": "Interact Club de Pombal",
+      "club": "Interact Club de Pombal",
+      "director": false,
+      "email": "interactpb@gmail.com",
+      "password": "interactpb",
+      "secretary": true
+    },
+    "cecilia": {
+      "name": "Cecília Nunes Tenório",
+      "club": "Interact Club de Águas Belas",
       "director": true,
-      "directory": "treasurer"
-    }
-  },
-  "report": {
-    "-Lmc4zcgVFLU_N1bjI6q": {
+      "directory": "president",
+      "email": "cecilianunest@gmail.com",
+      "password": "ceciliaamor",
+      "secretary": false
+    },
+    "anaju": {
+      "name": "Ana Júlia Felix de Almeida Bonfim",
+      "club": "Interact Club de Patos-Sul",
+      "director": true,
+      "directory": "secretary",
+      "email": "anajuliafelixrye@gmail.com",
+      "password": "anajulinda",
+      "secretary": false
+    },
+    "leticia": {
+      "name": "Letícia Maria Freitas Alves",
+      "club": "Interact Club de Pau dos Ferros",
+      "director": true,
+      "directory": "treasurer",
+      "email": "leticiamaria_alves@hotmail.com",
+      "password": "leticialinda",
+      "secretary": false
+    },
+    "sabrina": {
+      "name": "Vitória Sabrina Ferreira",
+      "club": "Interact Club de São Miguel",
+      "director": true,
+      "directory": "treasurer",
+      "email": "vitoriasabrinaf15@gmail.com",
+      "password": "sabrinafeia",
+      "secretary": false
+    },
+    "madu": {
+      "name": "Maria Eduarda Pereira de Vasconcelos",
+      "club": "Interact Club de Caicó-Centenário",
+      "director": true,
+      "directory": "adm",
+      "email": "madwpereira@gmail.com",
+      "password": "madulinda",
+      "secretary": false
+    },
+    "flavio": {
+      "name": "Flávio Henrique Silva Maria",
       "club": "Interact Club de Master Natal-Sul",
-      "month": "Agosto",
-      "president": "Antonio E",
-      "presidentDescription": "foi shioooooooooow"
+      "director": true,
+      "directory": "ph",
+      "email": "flaviohsm0506@gmail.com",
+      "password": "flaviolindo",
+      "secretary": false
+    },
+    "atila": {
+      "name": "Átila Augusto Araujo Dantas",
+      "club": "Interact Club de Caicó-Centenário",
+      "director": true,
+      "directory": "dqa",
+      "email": "atilaaugustoad@gmail.com",
+      "password": "atilalindo",
+      "secretary": false
+    },
+    "ruan": {
+      "name": "Ruan Pabllo Barbosa Claudino",
+      "club": "Interact Club de São João do Rio do Peixe",
+      "director": true,
+      "directory": "ip",
+      "email": "ruanpabllobc@gmail.com",
+      "password": "ruanlindo",
+      "secretary": false
+    },
+    "lidia": {
+      "name": "Lídia Noemy de Almeida",
+      "club": "Interact Club de São Miguel",
+      "director": true,
+      "directory": "fr",
+      "email": "noemy351@outlook.com",
+      "password": "lidialinda",
+      "secretary": false
+    },
+    "erisuser": {
+      "club": "Interact Club de Master Natal-Sul",
+      "director": true,
+      "directory": "president",
+      "email": "erisvan.junior.a@gmail.com",
+      "name": "Erisvan Alves Presid",
+      "password": "interactmns",
+      "secretary": true
     }
   }
 }

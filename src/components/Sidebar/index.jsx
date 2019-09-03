@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
       >
         <div className='logo'>
           <a
-            href='https://www.interact4500.com'
+            href='#!'
             className='simple-text logo-mini'
             rel='noopener noreferrer'
             target='_blank'
@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
             </div>
           </a>
           <a
-            href='https://www.interact4500.com'
+            href='#!'
             className='simple-text logo-normal'
             rel='noopener noreferrer'
             target='_blank'

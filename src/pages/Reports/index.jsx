@@ -14,7 +14,7 @@ import {
   Input
 } from 'reactstrap'
 
-import { arrayOfMonths } from 'helpers'
+import { arrayOfMonths, fromMonth } from 'helpers'
 
 export default class Reports extends Component {
   state = { month: 'Julho' }
@@ -31,6 +31,15 @@ export default class Reports extends Component {
     const report = reports.find(report => report.month === month)
 
     if (!report) return <h4>Esse mês ainda não possui relatório</h4>
+
+    let showFeedback = false
+    const actualMonth = new Date().getMonth()
+    const actualDay = new Date().getMonth()
+    if (actualMonth > fromMonth(month)) {
+      showFeedback = true
+    } else if (actualMonth === fromMonth(month) && actualDay > 25) {
+      showFeedback = true
+    }
 
     const {
       president,
@@ -67,7 +76,7 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {president.feedback && (
+          {president.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
@@ -123,7 +132,7 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {secretary.feedback && (
+          {secretary.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
@@ -207,7 +216,7 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {treasurer.feedback && (
+          {treasurer.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
@@ -243,6 +252,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {protocol.feedback && showFeedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={protocol.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Administração</CardTitle>
@@ -299,7 +322,7 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {adm.feedback && (
+          {adm.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
@@ -335,6 +358,20 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
+          {ph.feedback && showFeedback && (
+            <Col md='10'>
+              <FormGroup row>
+                <Label for='feedback'>Feedback:</Label>
+                <Input
+                  type='textarea'
+                  id='feedback'
+                  value={ph.feedback}
+                  placeholder='Resposta do relatório...'
+                  disabled={true}
+                />
+              </FormGroup>
+            </Col>
+          )}
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Imagem Pública</CardTitle>
@@ -357,14 +394,14 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {ph.feedback && (
+          {ip.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
                 <Input
                   type='textarea'
                   id='feedback'
-                  value={ph.feedback}
+                  value={ip.feedback}
                   placeholder='Resposta do relatório...'
                   disabled={true}
                 />
@@ -435,7 +472,7 @@ export default class Reports extends Component {
               />
             </FormGroup>
           </Col>
-          {dqa.feedback && (
+          {dqa.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
@@ -466,7 +503,7 @@ export default class Reports extends Component {
               <Input id='description' value={fr.description} disabled />
             </FormGroup>
           </Col>
-          {fr.feedback && (
+          {fr.feedback && showFeedback && (
             <Col md='10'>
               <FormGroup row>
                 <Label for='feedback'>Feedback:</Label>
