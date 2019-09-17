@@ -16,6 +16,9 @@ import {
   Button
 } from 'reactstrap'
 
+import { css } from 'glamor'
+import { toast } from 'react-toastify'
+
 import { arrayOfMonths, formatDirectory } from 'helpers'
 
 export default class Feedback extends Component {
@@ -37,7 +40,30 @@ export default class Feedback extends Component {
     })
   }
 
+  showErrorToast = () => {
+    toast('Preencha o Feedback', {
+      className: css({
+        background: '#de95ae'
+      }),
+      bodyClassName: css({
+        color: 'white'
+      }),
+      progressClassName: css({
+        background:
+          'linear-gradient(to right, rgba(217, 27, 92, 1), rgba(217, 27, 92, .5))'
+      })
+    })
+  }
+
   submitFeedback = async (report, user, index, setValue) => {
+    if (!this.state.feedbacks[index]) {
+      this.showErrorToast()
+      return
+    }
+    if (this.state.feedbacks[index] === '') {
+      this.showErrorToast()
+      return
+    }
     const data = {
       ...report,
       [user._data.directory]: {
@@ -569,6 +595,8 @@ export default class Feedback extends Component {
   }
 
   render() {
+    toast.configure()
+
     const { month } = this.state
 
     return (

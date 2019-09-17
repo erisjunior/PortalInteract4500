@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'assets/scss/paper-dashboard.scss?v=1.1.0'
 import 'assets/css/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { Dashboard } from 'layouts'
 

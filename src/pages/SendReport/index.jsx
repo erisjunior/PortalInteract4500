@@ -18,6 +18,9 @@ import { getStorage, setStorage } from 'services/storage'
 import Context from 'services/context'
 import { save } from 'services/firebase'
 
+import { css } from 'glamor'
+import { toast } from 'react-toastify'
+
 import * as Pages from './pages'
 
 const basicReport = { sponsor: '', description: '' }
@@ -78,15 +81,64 @@ export default class SendReport extends Component {
     this.setState({ report: { ...this.state.report, [name]: value } })
   }
 
+  checkReport = ({ sponsor, description }) =>
+    sponsor === '' || description === ''
+
+  somethingEmpty = () => {
+    const { report } = this.state
+
+    return (
+      this.checkReport(report.president) ||
+      this.checkReport(report.secretary) ||
+      this.checkReport(report.treasurer) ||
+      this.checkReport(report.protocol) ||
+      this.checkReport(report.adm) ||
+      this.checkReport(report.ip) ||
+      this.checkReport(report.ph) ||
+      this.checkReport(report.dqa) ||
+      this.checkReport(report.fr)
+    )
+  }
+
   onClickContinue = async (user, setValue) => {
     const { actualPage, report } = this.state
 
     if (actualPage > 7) {
+      if (this.somethingEmpty()) {
+        toast('Preencha todas as informações', {
+          className: css({
+            background: '#de95ae'
+          }),
+          bodyClassName: css({
+            color: 'white'
+          }),
+          progressClassName: css({
+            background:
+              'linear-gradient(to right, rgba(217, 27, 92, 1), rgba(217, 27, 92, .5))'
+          })
+        })
+        return
+      }
+
       const newReport = {
         club: user._data.club,
         ...report
       }
+
       await save('reports', newReport)
+
+      toast('Relatório Enviado', {
+        className: css({
+          background: '#9dd991'
+        }),
+        bodyClassName: css({
+          color: 'white'
+        }),
+        progressClassName: css({
+          background:
+            'linear-gradient(to right, rgba(104, 214, 26, 1), rgba(104, 214, 26, .5))'
+        })
+      })
 
       this.setState({ report: initialReport, actualPage: 0 })
     } else {
@@ -128,6 +180,8 @@ export default class SendReport extends Component {
   }
 
   render() {
+    toast.configure()
+
     const { actualPage, report } = this.state
 
     return (
