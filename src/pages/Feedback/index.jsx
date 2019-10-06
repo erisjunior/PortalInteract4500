@@ -160,7 +160,7 @@ export default class Feedback extends Component {
 
     switch (user._data.directory) {
       case 'president':
-        if (report.president.feedback) return <div />
+        if (report.president.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -193,7 +193,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'secretary':
-        if (report.secretary.feedback) return <div />
+        if (report.secretary.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -260,7 +260,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'treasurer':
-        if (report.treasurer.feedback) return <div />
+        if (report.treasurer.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -341,7 +341,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'protocol':
-        if (report.protocol.feedback) return <div />
+        if (report.protocol.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -370,7 +370,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'adm':
-        if (report.adm.feedback) return <div />
+        if (report.adm.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -439,7 +439,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'ph':
-        if (report.ph.feedback) return <div />
+        if (report.ph.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -468,7 +468,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'ip':
-        if (report.ip.feedback) return <div />
+        if (report.ip.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -497,7 +497,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'dqa':
-        if (report.dqa.feedback) return <div />
+        if (report.dqa.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -572,7 +572,7 @@ export default class Feedback extends Component {
           </div>
         )
       case 'fr':
-        if (report.fr.feedback) return <div />
+        if (report.fr.feedback) return <div key={index} />
         return (
           <div key={index}>
             <CardHeader>
@@ -597,7 +597,7 @@ export default class Feedback extends Component {
         )
 
       default:
-        return <div />
+        return <div key={index} />
     }
   }
 
