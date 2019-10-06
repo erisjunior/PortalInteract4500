@@ -55,6 +55,21 @@ export default class Feedback extends Component {
     })
   }
 
+  showSuccessToast = () => {
+    toast('Feedback Enviado', {
+      className: css({
+        background: '#9dd991'
+      }),
+      bodyClassName: css({
+        color: 'white'
+      }),
+      progressClassName: css({
+        background:
+          'linear-gradient(to right, rgba(104, 214, 26, 1), rgba(104, 214, 26, .5))'
+      })
+    })
+  }
+
   submitFeedback = async (report, user, index, setValue) => {
     if (!this.state.feedbacks[index]) {
       this.showErrorToast()
@@ -64,6 +79,8 @@ export default class Feedback extends Component {
       this.showErrorToast()
       return
     }
+    const confirmed = window.confirm('Confirma o envio do feedback?')
+    if (!confirmed) return
     const data = {
       ...report,
       [user._data.directory]: {
@@ -73,6 +90,7 @@ export default class Feedback extends Component {
     }
 
     await update('reports', data, report.key)
+    this.showSuccessToast()
 
     if (user._data.secretary) {
       load(

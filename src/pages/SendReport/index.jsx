@@ -120,6 +120,9 @@ export default class SendReport extends Component {
         return
       }
 
+      const confirmed = window.confirm('Confirma o envio do relatório?')
+      if (!confirmed) return
+
       const newReport = {
         club: user._data.club,
         ...report
