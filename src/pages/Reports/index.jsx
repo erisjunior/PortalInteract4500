@@ -32,14 +32,13 @@ export default class Reports extends Component {
 
     if (!report) return <h4>Esse mês ainda não possui relatório</h4>
 
-    let showFeedback = false
-    const actualMonth = new Date().getMonth()
-    const actualDay = new Date().getMonth()
-    if (actualMonth > fromMonth(month)) {
-      showFeedback = true
-    } else if (actualMonth === fromMonth(month) && actualDay > 25) {
-      showFeedback = true
-    }
+    const actualYear = new Date().getFullYear();
+    const actualMonth = new Date().getMonth();
+    const actualDay = new Date().getDate();
+    const showFeedback =
+      actualYear > report.year ||
+      actualMonth > fromMonth(month) ||
+      (actualMonth === fromMonth(month) && actualDay > 25);
 
     const {
       president,
