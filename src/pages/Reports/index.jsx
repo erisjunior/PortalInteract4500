@@ -11,7 +11,7 @@ import {
   Col,
   FormGroup,
   Label,
-  Input
+  Input,
 } from 'reactstrap'
 
 import { arrayOfMonths, fromMonth } from 'helpers'
@@ -20,25 +20,25 @@ export default class Reports extends Component {
   state = { month: 'Julho' }
 
   formatMonthOptions = () =>
-    arrayOfMonths().map(month => <option key={month}>{month}</option>)
+    arrayOfMonths().map((month) => <option key={month}>{month}</option>)
 
   handleChange = (name, value) => {
     this.setState({ [name]: value })
   }
 
-  showContent = reports => {
+  showContent = (reports) => {
     const { month } = this.state
-    const report = reports.find(report => report.month === month)
+    const report = reports.find((report) => report.month === month)
 
     if (!report) return <h4>Esse mês ainda não possui relatório</h4>
 
-    const actualYear = new Date().getFullYear();
-    const actualMonth = new Date().getMonth();
-    const actualDay = new Date().getDate();
+    const actualYear = new Date().getFullYear()
+    const actualMonth = new Date().getMonth()
+    const actualDay = new Date().getDate()
     const showFeedback =
       actualYear > report.year ||
       actualMonth > fromMonth(month) ||
-      (actualMonth === fromMonth(month) && actualDay > 25);
+      (actualMonth === fromMonth(month) && actualDay > 25)
 
     const {
       president,
@@ -49,7 +49,7 @@ export default class Reports extends Component {
       ip,
       ph,
       dqa,
-      fr
+      fr,
     } = report
 
     return (
@@ -536,7 +536,7 @@ export default class Reports extends Component {
                       <FormGroup row>
                         <Label for='exampleSelect'>Mês</Label>
                         <Input
-                          onChange={e =>
+                          onChange={(e) =>
                             this.handleChange('month', e.target.value)
                           }
                           value={month}
