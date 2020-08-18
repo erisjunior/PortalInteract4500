@@ -499,7 +499,12 @@ export default class Reports extends Component {
           <Col md='10'>
             <FormGroup row>
               <Label for='description'>Descrição das atividades:</Label>
-              <Input id='description' value={fr.description} disabled />
+              <Input
+                type='textarea'
+                id='description'
+                value={fr.description}
+                disabled
+              />
             </FormGroup>
           </Col>
           {fr.feedback && showFeedback && (

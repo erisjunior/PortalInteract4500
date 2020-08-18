@@ -13,7 +13,7 @@ import {
   FormGroup,
   Label,
   Input,
-  Button
+  Button,
 } from 'reactstrap'
 
 import { css } from 'glamor'
@@ -25,7 +25,7 @@ export default class Feedback extends Component {
   state = { month: 'Julho', feedbacks: {} }
 
   formatMonthOptions = () =>
-    arrayOfMonths().map(month => <option key={month}>{month}</option>)
+    arrayOfMonths().map((month) => <option key={month}>{month}</option>)
 
   handleChange = (name, value) => {
     this.setState({ [name]: value })
@@ -35,38 +35,38 @@ export default class Feedback extends Component {
     this.setState({
       feedbacks: {
         ...this.state.feedbacks,
-        [name]: value
-      }
+        [name]: value,
+      },
     })
   }
 
   showErrorToast = () => {
     toast('Preencha o Feedback', {
       className: css({
-        background: '#de95ae'
+        background: '#de95ae',
       }),
       bodyClassName: css({
-        color: 'white'
+        color: 'white',
       }),
       progressClassName: css({
         background:
-          'linear-gradient(to right, rgba(217, 27, 92, 1), rgba(217, 27, 92, .5))'
-      })
+          'linear-gradient(to right, rgba(217, 27, 92, 1), rgba(217, 27, 92, .5))',
+      }),
     })
   }
 
   showSuccessToast = () => {
     toast('Feedback Enviado', {
       className: css({
-        background: '#9dd991'
+        background: '#9dd991',
       }),
       bodyClassName: css({
-        color: 'white'
+        color: 'white',
       }),
       progressClassName: css({
         background:
-          'linear-gradient(to right, rgba(104, 214, 26, 1), rgba(104, 214, 26, .5))'
-      })
+          'linear-gradient(to right, rgba(104, 214, 26, 1), rgba(104, 214, 26, .5))',
+      }),
     })
   }
 
@@ -85,8 +85,8 @@ export default class Feedback extends Component {
       ...report,
       [user._data.directory]: {
         ...report[user._data.directory],
-        feedback: this.state.feedbacks[index]
-      }
+        feedback: this.state.feedbacks[index],
+      },
     }
 
     await update('reports', data, report.key)
@@ -95,7 +95,7 @@ export default class Feedback extends Component {
     if (user._data.secretary) {
       load(
         'reports',
-        async tempReports => {
+        async (tempReports) => {
           const clubReports = tempReports.filter(
             ({ club }) => club === user._data.club
           )
@@ -107,7 +107,7 @@ export default class Feedback extends Component {
     if (user._data.director) {
       load(
         'reports',
-        async tempReports => {
+        async (tempReports) => {
           const directorReports = tempReports
           await setValue({ directorReports })
         },
@@ -155,7 +155,7 @@ export default class Feedback extends Component {
       ip,
       ph,
       dqa,
-      fr
+      fr,
     } = report
 
     switch (user._data.directory) {
@@ -588,7 +588,12 @@ export default class Feedback extends Component {
               <Col md='10'>
                 <FormGroup row>
                   <Label for='description'>Descrição das atividades:</Label>
-                  <Input id='description' value={fr.description} disabled />
+                  <Input
+                    type='textarea'
+                    id='description'
+                    value={fr.description}
+                    disabled
+                  />
                 </FormGroup>
               </Col>
               {this.renderInput(report, user, index, setValue)}
@@ -603,7 +608,7 @@ export default class Feedback extends Component {
 
   showContent = (data, user, setValue) => {
     const { month } = this.state
-    const reports = data.filter(report => report.month === month)
+    const reports = data.filter((report) => report.month === month)
 
     if (reports.length < 1) return <h4>Esse mês ainda não possui relatório</h4>
 
@@ -633,7 +638,7 @@ export default class Feedback extends Component {
                       <FormGroup row>
                         <Label for='exampleSelect'>Mês</Label>
                         <Input
-                          onChange={e =>
+                          onChange={(e) =>
                             this.handleChange('month', e.target.value)
                           }
                           value={month}
