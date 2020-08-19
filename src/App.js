@@ -8,6 +8,7 @@ import { getStorage } from 'services/storage'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'assets/scss/paper-dashboard.scss?v=1.1.0'
+import 'assets/css/checkbox.css'
 import 'assets/css/demo.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import 'react-toastify/dist/ReactToastify.css'
@@ -18,26 +19,26 @@ const hist = createBrowserHistory()
 
 class App extends Component {
   state = {
-    setValue: newValue => {
+    setValue: (newValue) => {
       this.setState({ ...newValue })
     },
     user: {
       _data: {},
-      _isLogged: false
+      _isLogged: false,
     },
 
     clubReports: [],
     directorReports: [],
 
     users: [],
-    clubs: []
+    clubs: [],
   }
 
   async componentDidMount() {
     await this.getUserFromStorage()
 
-    load('clubs', clubs => this.setState({ clubs }), 50)
-    load('users', users => this.setState({ users }), 100)
+    load('clubs', (clubs) => this.setState({ clubs }), 50)
+    load('users', (users) => this.setState({ users }), 100)
   }
 
   getUserFromStorage = async () => {
@@ -48,7 +49,7 @@ class App extends Component {
       if (user._data.secretary) {
         load(
           'reports',
-          tempReports => {
+          (tempReports) => {
             const clubReports = tempReports.filter(
               ({ club }) => club === user._data.club
             )
@@ -60,7 +61,7 @@ class App extends Component {
       if (user._data.director) {
         load(
           'reports',
-          tempReports => {
+          (tempReports) => {
             const directorReports = tempReports
             this.setState({ directorReports })
           },
@@ -75,7 +76,7 @@ class App extends Component {
       <Context.Provider value={this.state}>
         <Router history={hist}>
           <Switch>
-            <Route path='/' render={props => <Dashboard {...props} />} />
+            <Route path='/' render={(props) => <Dashboard {...props} />} />
             <Redirect from='*' to='/' />
           </Switch>
         </Router>

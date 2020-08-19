@@ -22,7 +22,7 @@ import { toast } from 'react-toastify'
 import { arrayOfMonths, formatDirectory } from 'helpers'
 
 export default class Feedback extends Component {
-  state = { month: 'Julho', feedbacks: {} }
+  state = { month: 'Julho', feedbacks: {}, colors: {} }
 
   formatMonthOptions = () =>
     arrayOfMonths().map((month) => <option key={month}>{month}</option>)
@@ -40,8 +40,17 @@ export default class Feedback extends Component {
     })
   }
 
+  handleChangeColor = (name, value) => {
+    this.setState({
+      colors: {
+        ...this.state.colors,
+        [name]: value,
+      },
+    })
+  }
+
   showErrorToast = () => {
-    toast('Preencha o Feedback', {
+    toast('Preencha o Feedback e escolha a color', {
       className: css({
         background: '#de95ae',
       }),
@@ -79,6 +88,11 @@ export default class Feedback extends Component {
       this.showErrorToast()
       return
     }
+    if (!this.state.colors[index]) {
+      this.showErrorToast()
+      return
+    }
+
     const confirmed = window.confirm('Confirma o envio do feedback?')
     if (!confirmed) return
     const data = {
@@ -86,6 +100,7 @@ export default class Feedback extends Component {
       [user._data.directory]: {
         ...report[user._data.directory],
         feedback: this.state.feedbacks[index],
+        color: this.state.colors[index] || null,
       },
     }
 
@@ -144,6 +159,27 @@ export default class Feedback extends Component {
     )
   }
 
+  renderRadios = (index) => {
+    const color = this.state.colors[index] || ''
+
+    return (
+      <div className='nice-checkboxes'>
+        <div
+          className={color === 'green' && `${color}-selected`}
+          onClick={() => this.handleChangeColor(index, 'green')}
+        />
+        <div
+          className={color === 'yellow' && `${color}-selected`}
+          onClick={() => this.handleChangeColor(index, 'yellow')}
+        />
+        <div
+          className={color === 'red' && `${color}-selected`}
+          onClick={() => this.handleChangeColor(index, 'red')}
+        />
+      </div>
+    )
+  }
+
   renderByComission = (report, user, index, setValue) => {
     const {
       club,
@@ -165,15 +201,16 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Presidência - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input
-                    id='sponsor'
-                    value={president.sponsor}
-                    disabled={true}
-                  />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={president.sponsor} disabled />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -184,7 +221,7 @@ export default class Feedback extends Component {
                     type='textarea'
                     id='description'
                     value={president.description}
-                    disabled={true}
+                    disabled
                   />
                 </FormGroup>
               </Col>
@@ -198,15 +235,20 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Secretaria - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input
-                    id='sponsor'
-                    value={secretary.sponsor}
-                    disabled={true}
-                  />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input
+                        id='sponsor'
+                        value={secretary.sponsor}
+                        disabled={true}
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -214,21 +256,13 @@ export default class Feedback extends Component {
                 <Col md='3'>
                   <FormGroup>
                     <Label for='offices'>Nº de ofícios expedidos</Label>
-                    <Input
-                      id='offices'
-                      value={secretary.offices}
-                      disabled={true}
-                    />
+                    <Input id='offices' value={secretary.offices} disabled />
                   </FormGroup>
                 </Col>
                 <Col md='3'>
                   <FormGroup>
                     <Label for='inMail'>Nº de correspondências enviadas</Label>
-                    <Input
-                      id='inMail'
-                      value={secretary.inMail}
-                      disabled={true}
-                    />
+                    <Input id='inMail' value={secretary.inMail} disabled />
                   </FormGroup>
                 </Col>
                 <Col md='4'>
@@ -236,11 +270,7 @@ export default class Feedback extends Component {
                     <Label for='outMail'>
                       Nº de correspondências recebidas
                     </Label>
-                    <Input
-                      id='outMail'
-                      value={secretary.outMail}
-                      disabled={true}
-                    />
+                    <Input id='outMail' value={secretary.outMail} disabled />
                   </FormGroup>
                 </Col>
               </Row>
@@ -251,7 +281,7 @@ export default class Feedback extends Component {
                     type='textarea'
                     id='description'
                     value={secretary.description}
-                    disabled={true}
+                    disabled
                   />
                 </FormGroup>
               </Col>
@@ -265,15 +295,20 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Tesouraria - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input
-                    id='sponsor'
-                    value={treasurer.sponsor}
-                    disabled={true}
-                  />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input
+                        id='sponsor'
+                        value={treasurer.sponsor}
+                        disabled={true}
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -285,7 +320,7 @@ export default class Feedback extends Component {
                       type='number'
                       id='monthly'
                       value={treasurer.monthly}
-                      disabled={true}
+                      disabled
                     />
                   </FormGroup>
                 </Col>
@@ -296,7 +331,7 @@ export default class Feedback extends Component {
                       type='number'
                       id='inDayMonthly'
                       value={treasurer.inDayMonthly}
-                      disabled={true}
+                      disabled
                     />
                   </FormGroup>
                 </Col>
@@ -309,7 +344,7 @@ export default class Feedback extends Component {
                       type='number'
                       id='preBalance'
                       value={treasurer.preBalance}
-                      disabled={true}
+                      disabled
                     />
                   </FormGroup>
                 </Col>
@@ -320,7 +355,7 @@ export default class Feedback extends Component {
                       type='number'
                       id='balance'
                       value={treasurer.balance}
-                      disabled={true}
+                      disabled
                     />
                   </FormGroup>
                 </Col>
@@ -332,7 +367,7 @@ export default class Feedback extends Component {
                     type='textarea'
                     id='description'
                     value={treasurer.description}
-                    disabled={true}
+                    disabled
                   />
                 </FormGroup>
               </Col>
@@ -346,11 +381,20 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Diretor de Protocolo - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={protocol.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input
+                        id='sponsor'
+                        value={protocol.sponsor}
+                        disabled={true}
+                      />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -375,11 +419,16 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Administração - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={adm.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={adm.sponsor} disabled={true} />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -444,11 +493,16 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Projetos Humanitários - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={ph.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={ph.sponsor} disabled={true} />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -473,11 +527,16 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Imagem Pública - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={ip.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={ip.sponsor} disabled={true} />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -504,11 +563,16 @@ export default class Feedback extends Component {
               <CardTitle tag='h5'>
                 Desenvolvimento do Quadro Associativo - {club}
               </CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={dqa.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={dqa.sponsor} disabled={true} />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>
@@ -577,11 +641,16 @@ export default class Feedback extends Component {
           <div key={index}>
             <CardHeader>
               <CardTitle tag='h5'>Fundação Rotária - {club}</CardTitle>
-              <Col md='4'>
-                <FormGroup row>
-                  <Label for='sponsor'>Responsável</Label>
-                  <Input id='sponsor' value={fr.sponsor} disabled />
-                </FormGroup>
+              <Col md='6'>
+                <Row>
+                  <Col md='8'>
+                    <FormGroup row>
+                      <Label for='sponsor'>Responsável</Label>
+                      <Input id='sponsor' value={fr.sponsor} disabled={true} />
+                    </FormGroup>
+                  </Col>
+                  <Col md='4'>{this.renderRadios(index)}</Col>
+                </Row>
               </Col>
             </CardHeader>
             <CardBody>

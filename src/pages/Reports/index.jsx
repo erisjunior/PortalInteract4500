@@ -56,11 +56,26 @@ export default class Reports extends Component {
       <div>
         <CardHeader>
           <CardTitle tag='h5'>Presidência</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={president.sponsor} disabled={true} />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input
+                    id='sponsor'
+                    value={president.sponsor}
+                    disabled={true}
+                  />
+                </FormGroup>
+              </Col>
+              {president.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${president.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -92,11 +107,26 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Secretaria</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={secretary.sponsor} disabled={true} />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input
+                    id='sponsor'
+                    value={secretary.sponsor}
+                    disabled={true}
+                  />
+                </FormGroup>
+              </Col>
+              {secretary.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${secretary.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -148,11 +178,26 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Tesouraria</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={treasurer.sponsor} disabled={true} />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input
+                    id='sponsor'
+                    value={treasurer.sponsor}
+                    disabled={true}
+                  />
+                </FormGroup>
+              </Col>
+              {treasurer.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${treasurer.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -232,11 +277,26 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Diretor de Protocolo</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={protocol.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input
+                    id='sponsor'
+                    value={protocol.sponsor}
+                    disabled={true}
+                  />
+                </FormGroup>
+              </Col>
+              {protocol.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${protocol.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -268,11 +328,22 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Administração</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={adm.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input id='sponsor' value={adm.sponsor} disabled={true} />
+                </FormGroup>
+              </Col>
+              {adm.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${adm.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -338,11 +409,22 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Projetos Humanitários</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={ph.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input id='sponsor' value={ph.sponsor} disabled={true} />
+                </FormGroup>
+              </Col>
+              {ph.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${ph.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -374,11 +456,22 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Imagem Pública</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={ip.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input id='sponsor' value={ip.sponsor} disabled={true} />
+                </FormGroup>
+              </Col>
+              {ip.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${ip.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -410,11 +503,22 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Desenvolvimento do Quadro Associativo</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={dqa.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input id='sponsor' value={dqa.sponsor} disabled={true} />
+                </FormGroup>
+              </Col>
+              {dqa.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${dqa.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
@@ -488,11 +592,22 @@ export default class Reports extends Component {
         </CardBody>
         <CardHeader>
           <CardTitle tag='h5'>Fundação Rotária</CardTitle>
-          <Col md='4'>
-            <FormGroup row>
-              <Label for='sponsor'>Responsável</Label>
-              <Input id='sponsor' value={fr.sponsor} disabled />
-            </FormGroup>
+          <Col md='6'>
+            <Row>
+              <Col md='8'>
+                <FormGroup row>
+                  <Label for='sponsor'>Responsável</Label>
+                  <Input id='sponsor' value={fr.sponsor} disabled={true} />
+                </FormGroup>
+              </Col>
+              {fr.color && (
+                <Col md='4'>
+                  <div className='nice-checkboxes'>
+                    <div className={`${fr.color}-selected`} />
+                  </div>
+                </Col>
+              )}
+            </Row>
           </Col>
         </CardHeader>
         <CardBody>
