@@ -37,8 +37,8 @@ export default class Reports extends Component {
     const actualDay = new Date().getDate()
     const showFeedback =
       actualYear > report.year ||
-      actualMonth > fromMonth(month) ||
-      (actualMonth === fromMonth(month) && actualDay > 25)
+      actualMonth > fromMonth(month) + 1 ||
+      (actualMonth === fromMonth(month) + 1 && actualDay >= 25)
 
     const {
       president,
@@ -68,7 +68,7 @@ export default class Reports extends Component {
                   />
                 </FormGroup>
               </Col>
-              {president.color && (
+              {president.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${president.color}-selected`} />
@@ -119,7 +119,7 @@ export default class Reports extends Component {
                   />
                 </FormGroup>
               </Col>
-              {secretary.color && (
+              {secretary.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${secretary.color}-selected`} />
@@ -190,7 +190,7 @@ export default class Reports extends Component {
                   />
                 </FormGroup>
               </Col>
-              {treasurer.color && (
+              {treasurer.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${treasurer.color}-selected`} />
@@ -289,7 +289,7 @@ export default class Reports extends Component {
                   />
                 </FormGroup>
               </Col>
-              {protocol.color && (
+              {protocol.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${protocol.color}-selected`} />
@@ -336,7 +336,7 @@ export default class Reports extends Component {
                   <Input id='sponsor' value={adm.sponsor} disabled={true} />
                 </FormGroup>
               </Col>
-              {adm.color && (
+              {adm.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${adm.color}-selected`} />
@@ -417,7 +417,7 @@ export default class Reports extends Component {
                   <Input id='sponsor' value={ph.sponsor} disabled={true} />
                 </FormGroup>
               </Col>
-              {ph.color && (
+              {ph.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${ph.color}-selected`} />
@@ -464,7 +464,7 @@ export default class Reports extends Component {
                   <Input id='sponsor' value={ip.sponsor} disabled={true} />
                 </FormGroup>
               </Col>
-              {ip.color && (
+              {ip.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${ip.color}-selected`} />
@@ -511,7 +511,7 @@ export default class Reports extends Component {
                   <Input id='sponsor' value={dqa.sponsor} disabled={true} />
                 </FormGroup>
               </Col>
-              {dqa.color && (
+              {dqa.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${dqa.color}-selected`} />
@@ -600,7 +600,7 @@ export default class Reports extends Component {
                   <Input id='sponsor' value={fr.sponsor} disabled={true} />
                 </FormGroup>
               </Col>
-              {fr.color && (
+              {fr.color && showFeedback && (
                 <Col md='4'>
                   <div className='nice-checkboxes'>
                     <div className={`${fr.color}-selected`} />
