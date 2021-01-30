@@ -26,6 +26,7 @@ import * as Pages from './pages'
 const basicReport = { sponsor: '', description: '' }
 const initialReport = {
   month: 'Julho',
+  year: new Date().getFullYear(),
   president: basicReport,
   secretary: { ...basicReport, offices: '', inMail: '', outMail: '' },
   treasurer: {

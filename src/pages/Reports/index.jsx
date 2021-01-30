@@ -36,6 +36,7 @@ export default class Reports extends Component {
     const actualMonth = new Date().getMonth()
     const actualDay = new Date().getDate()
     const showFeedback =
+      !report.year ||
       actualYear > report.year ||
       actualMonth > fromMonth(month) + 1 ||
       (actualMonth === fromMonth(month) + 1 && actualDay >= 25)
